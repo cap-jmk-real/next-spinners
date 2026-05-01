@@ -1,0 +1,10 @@
+# Shiphook: webhook → git pull → run deploy script.
+# See https://github.com/cap-jmk-real/shiphook
+# Env vars (SHIPHOOK_*) override these values.
+
+port: 3141
+repoPath: .
+runScript: |
+  npm ci
+  npm run deploy
+path: /
