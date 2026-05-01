@@ -1,7 +1,7 @@
 {
   "name": "next-spinners",
   "version": "0.1.0",
-  "description": "Lightweight loading spinners for Next.js and React (App Router friendly, CSS + components).",
+  "description": "Braille / ASCII frame loading spinners for Next.js and React (Client Components, inline styles).",
   "license": "MIT",
   "author": "",
   "repository": {
@@ -17,9 +17,7 @@
     "ui"
   ],
   "type": "module",
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -28,15 +26,14 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./next-spinner.css": "./dist/next-spinner.css"
+    }
   },
   "files": [
     "dist",
     "media/next-spinners-overview.gif"
   ],
   "scripts": {
-    "build": "tsup && node scripts/copy-css.mjs",
+    "build": "tsup",
     "audit": "npm audit --audit-level=high",
     "audit:prod": "npm audit --omit=dev --audit-level=high",
     "typecheck": "tsc --noEmit",
@@ -45,6 +42,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "media:snapshot": "node scripts/build-spinner-frames-snapshot.mjs",
     "media:gif": "node scripts/capture-overview-gif.mjs",
     "version:patch": "npm version patch -m \"chore: release %s\"",
     "version:minor": "npm version minor -m \"chore: release %s\"",

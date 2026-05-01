@@ -1,13 +1,13 @@
 # next-spinners
 
-Small, accessible loading indicators for **Next.js** and **React**. Components are **Server Component friendly** (no `"use client"` required). Styles ship as a separate CSS file you import once.
+**55** Braille / ASCII / emoji **frame spinners** for **Next.js** and **React**, ported from [`Eronred/expo-agent-spinners`](https://github.com/Eronred/expo-agent-spinners). Same Unicode frames and `setInterval` timings as the Expo app; **inline styles only** (no CSS import).
 
 ## Preview
 
-![Animated overview of ring, dots, and bars spinners](./media/next-spinners-overview.gif)
+![Animated overview of agent frame spinners](./media/next-spinners-overview.gif)
 
-The GIF is shipped in the npm package under `media/` so this relative path works on GitHub. On **npmjs.com**, if the image does not render, use the versioned file URL instead, for example:  
-`https://unpkg.com/next-spinners@0.1.0/media/next-spinners-overview.gif` (bump the version after each release).
+The GIF is a vanilla preview of the full spinner grid (same frames and `intervalMs` as the React components). On **npmjs.com**, if the image does not render, use a versioned URL such as  
+`https://unpkg.com/next-spinners@0.1.0/media/next-spinners-overview.gif` (adjust the version after release).
 
 ## Install
 
@@ -15,57 +15,128 @@ The GIF is shipped in the npm package under `media/` so this relative path works
 npm install next-spinners
 ```
 
-Requires **Node 22+** (matches [Shiphook](https://github.com/cap-jmk-real/shiphook) and modern Next.js toolchains).
+Requires **Node 22+**.
 
-## Usage (App Router)
+## Usage (Client Components)
 
-Import the stylesheet once in your root layout:
-
-```tsx
-// app/layout.tsx
-import "next-spinners/next-spinner.css";
-```
-
-Use the spinner anywhere (Server or Client Components):
+Every export from this package uses **`"use client"`** (React state + `setInterval`). Import spinners only from **Client Components**, or from modules marked with `"use client"`:
 
 ```tsx
-import { NextSpinner } from "next-spinners";
+"use client";
 
-export default function Page() {
+import { DotsSpinner, WaveSpinner, PulseSpinner } from "next-spinners";
+
+export function LoadingRow() {
   return (
-    <p>
-      <NextSpinner variant="ring" size="md" label="Loading dashboard" />
+    <p style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <DotsSpinner size={24} color="#38bdf8" label="Loading dashboard" />
+      <span>Loading dashboard…</span>
     </p>
   );
 }
 ```
 
-### Variants and sizes
+You can render a client spinner as a child of a Server Component by wrapping it in a small client file—standard Next.js App Router pattern. **Do not** import `next-spinners/next-spinner.css`; it is not part of this package.
 
-- **variant**: `"ring"` (default) | `"dots"` | `"bars"`
-- **size**: `"sm"` | `"md"` (default) | `"lg"`
+### Props (all ported spinners)
 
-### Theming
+| Prop    | Type              | Default     | Notes                                         |
+| ------- | ----------------- | ----------- | --------------------------------------------- |
+| `size`  | `number`          | `24`        | Maps to `fontSize` (px).                      |
+| `color` | `string`          | `"#fff"`    | CSS color.                                    |
+| `style` | `CSSProperties`   | —           | Merged after base styles.                     |
+| `label` | `string`          | `"Loading"` | `aria-label` on the `status` live region.     |
+| …       | `HTMLSpanElement` | —           | Standard span attributes (`className`, etc.). |
 
-Override the accent color with CSS on a wrapper or globally:
+### Factory
 
-```css
-.my-panel .nsk {
-  --nsk-color: #10b981;
-}
-```
-
-### Caption
-
-Pass children to show text beside the indicator:
+To build your own frame spinner (Client Component):
 
 ```tsx
-<NextSpinner label="Loading">Fetching data…</NextSpinner>
+"use client";
+
+import { createAgentFrameSpinner } from "next-spinners";
+
+const FRAMES = ["⠋", "⠙", "⠹"] as const;
+export const MySpinner = createAgentFrameSpinner(FRAMES, 80, "MySpinner");
 ```
 
-## Full page example
+### Public API
 
-See [`examples/ExampleAppRouterPage.tsx`](./examples/ExampleAppRouterPage.tsx) for a ready-to-copy App Router page that exercises all variants.
+- `createAgentFrameSpinner`, type `AgentFrameSpinnerProps`
+- All `*Spinner` exports from `src/spinners/` (re-exported from the package root)
+
+### Expo demo name → export (55)
+
+Names on the left are the keys used in the upstream demo app; the right column is the **named export** from `next-spinners`.
+
+| Expo (demo)             | Export                       |
+| ----------------------- | ---------------------------- |
+| `dots`                  | `DotsSpinner`                |
+| `dots2`                 | `Dots2Spinner`               |
+| `dots3`                 | `Dots3Spinner`               |
+| `dots4`                 | `Dots4Spinner`               |
+| `dots5`                 | `Dots5Spinner`               |
+| `dots6`                 | `Dots6Spinner`               |
+| `dots7`                 | `Dots7Spinner`               |
+| `dots8`                 | `Dots8Spinner`               |
+| `dots9`                 | `Dots9Spinner`               |
+| `dots10`                | `Dots10Spinner`              |
+| `dots11`                | `Dots11Spinner`              |
+| `dots12`                | `Dots12Spinner`              |
+| `dots13`                | `Dots13Spinner`              |
+| `dots14`                | `Dots14Spinner`              |
+| `sand`                  | `SandSpinner`                |
+| `bounce`                | `BounceSpinner`              |
+| `dots_circle`           | `DotsCircleSpinner`          |
+| `wave`                  | `WaveSpinner`                |
+| `scan`                  | `ScanSpinner`                |
+| `rain`                  | `RainSpinner`                |
+| `pulse`                 | `PulseSpinner`               |
+| `snake`                 | `SnakeSpinner`               |
+| `sparkle`               | `SparkleSpinner`             |
+| `cascade`               | `CascadeSpinner`             |
+| `columns`               | `ColumnsSpinner`             |
+| `orbit`                 | `OrbitSpinner`               |
+| `breathe`               | `BreatheSpinner`             |
+| `waverows`              | `WaveRowsSpinner`            |
+| `checkerboard`          | `CheckerboardSpinner`        |
+| `helix`                 | `HelixSpinner`               |
+| `fillsweep`             | `FillSweepSpinner`           |
+| `diagswipe`             | `DiagSwipeSpinner`           |
+| `dqpb`                  | `DqpbSpinner`                |
+| `rolling_line`          | `RollingLineSpinner`         |
+| `simple_dots`           | `SimpleDotsSpinner`          |
+| `simple_dots_scrolling` | `SimpleDotsScrollingSpinner` |
+| `arc`                   | `ArcSpinner`                 |
+| `balloon`               | `BalloonSpinner`             |
+| `circle_halves`         | `CircleHalvesSpinner`        |
+| `circle_quarters`       | `CircleQuartersSpinner`      |
+| `point`                 | `PointSpinner`               |
+| `square_corners`        | `SquareCornersSpinner`       |
+| `toggle`                | `ToggleSpinner`              |
+| `triangle`              | `TriangleSpinner`            |
+| `grow_horizontal`       | `GrowHorizontalSpinner`      |
+| `grow_vertical`         | `GrowVerticalSpinner`        |
+| `noise`                 | `NoiseSpinner`               |
+| `arrow`                 | `ArrowSpinner`               |
+| `double_arrow`          | `DoubleArrowSpinner`         |
+| `hearts`                | `HeartsSpinner`              |
+| `clock`                 | `ClockSpinner`               |
+| `earth`                 | `EarthSpinner`               |
+| `moon`                  | `MoonSpinner`                |
+| `speaker`               | `SpeakerSpinner`             |
+| `weather`               | `WeatherSpinner`             |
+
+## App Router example
+
+See [`examples/ExampleAppRouterPage.tsx`](./examples/ExampleAppRouterPage.tsx) and [`examples/README.md`](./examples/README.md).
+
+## Maintainers: regenerating spinner modules
+
+1. Clone [expo-agent-spinners](https://github.com/Eronred/expo-agent-spinners) into `.expo-spinners-src/` at the repo root (folder is gitignored).
+2. Run `node scripts/generate-agent-spinners.mjs`.
+3. Format, test, and build.
 
 ## License
 

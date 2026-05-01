@@ -6,3 +6,4 @@ media/_gif_frames/
 .DS_Store
 .shiphook.secret
 .shiphook/logs/
+.expo-spinners-src/

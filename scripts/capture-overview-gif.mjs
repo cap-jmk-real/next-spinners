@@ -26,6 +26,12 @@ async function tryLaunch(chromium) {
 }
 
 async function main() {
+  execFileSync(
+    process.execPath,
+    [join(root, "scripts", "build-spinner-frames-snapshot.mjs")],
+    { cwd: root, stdio: "inherit" },
+  );
+
   const { chromium } = await import("playwright");
 
   rmSync(framesDir, { recursive: true, force: true });
@@ -33,17 +39,27 @@ async function main() {
 
   const browser = await tryLaunch(chromium);
   const page = await browser.newPage({
-    viewport: { width: 820, height: 420 },
+    viewport: { width: 960, height: 1400 },
   });
 
   await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "load" });
+  await page.evaluate(() => document.fonts?.ready ?? Promise.resolve());
 
-  const frameCount = 48;
-  const stepMs = 45;
-  for (let i = 0; i < frameCount; i++) {
+  /**
+   * GIF pacing (tune here for a ~2–4s, easy-to-read loop):
+   * - CAPTURE_FRAME_INTERVAL_MS: wall-clock delay between Playwright screenshots.
+   *   Higher = slower motion in source frames (was 45ms).
+   * - CAPTURE_FRAME_COUNT: how many PNGs we stitch; with interval 100ms, 36 frames ≈ 3.6s capture.
+   * - FFMPEG_FPS: output frame rate; duration ≈ CAPTURE_FRAME_COUNT / FFMPEG_FPS (e.g. 36/12 = 3s).
+   */
+  const CAPTURE_FRAME_INTERVAL_MS = 100;
+  const CAPTURE_FRAME_COUNT = 36;
+  const FFMPEG_FPS = 12;
+
+  for (let i = 0; i < CAPTURE_FRAME_COUNT; i++) {
     const name = `frame-${String(i).padStart(3, "0")}.png`;
     await page.screenshot({ path: join(framesDir, name) });
-    await new Promise((r) => setTimeout(r, stepMs));
+    await new Promise((r) => setTimeout(r, CAPTURE_FRAME_INTERVAL_MS));
   }
 
   await browser.close();
@@ -53,11 +69,11 @@ async function main() {
     [
       "-y",
       "-framerate",
-      "22",
+      String(FFMPEG_FPS),
       "-i",
       join(framesDir, "frame-%03d.png"),
       "-vf",
-      "fps=22,split[s0][s1];[s0]palettegen=stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=5",
+      `fps=${FFMPEG_FPS},split[s0][s1];[s0]palettegen=stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=5`,
       outGif,
     ],
     { stdio: "inherit", cwd: framesDir },

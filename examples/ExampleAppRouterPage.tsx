@@ -1,40 +1,39 @@
 /**
- * Drop-in example for the Next.js App Router. Assumes you already import the
- * stylesheet once in `app/layout.tsx`:
- *
- * ```tsx
- * import "next-spinners/next-spinner.css";
- * ```
+ * Example App Router page using client-only frame spinners.
+ * Either keep this file under a route that is a Client Component, or split
+ * spinners into a `"use client"` child and import that from a Server page.
  */
-import { NextSpinner } from "next-spinners";
+"use client";
+
+import { DotsSpinner, PulseSpinner, WaveSpinner } from "next-spinners";
 
 export default function ExampleAppRouterPage() {
   return (
     <main style={{ padding: "2rem", fontFamily: "system-ui, sans-serif" }}>
       <h1 style={{ marginTop: 0 }}>Dashboard</h1>
       <p style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-        <NextSpinner variant="ring" size="md" label="Loading metrics" />
+        <DotsSpinner size={24} color="#2563eb" label="Loading metrics" />
         <span>Loading metrics…</span>
       </p>
       <section style={{ marginTop: "2rem" }}>
-        <h2>All variants</h2>
-        <ul style={{ listStyle: "none", padding: 0, display: "flex", gap: "1.5rem" }}>
+        <h2>More indicators</h2>
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            display: "flex",
+            gap: "1.5rem",
+            flexWrap: "wrap",
+          }}
+        >
           <li>
-            <NextSpinner variant="ring" label="Ring" />
+            <WaveSpinner size={22} color="#0d9488" label="Wave" />
           </li>
           <li>
-            <NextSpinner variant="dots" label="Dots" />
-          </li>
-          <li>
-            <NextSpinner variant="bars" label="Bars" />
+            <PulseSpinner size={22} color="#c026d3" label="Pulse" />
           </li>
         </ul>
       </section>
-      <p style={{ marginTop: "2rem" }}>
-        <NextSpinner variant="ring" label="Saving" size="sm">
-          Saving draft…
-        </NextSpinner>
-      </p>
     </main>
   );
 }

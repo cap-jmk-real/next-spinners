@@ -2,10 +2,6 @@
 
 ## App Router page
 
-See [`ExampleAppRouterPage.tsx`](./ExampleAppRouterPage.tsx) for a full page that uses `ring`, `dots`, `bars`, sizes, and a caption.
+See [`ExampleAppRouterPage.tsx`](./ExampleAppRouterPage.tsx): a client page that uses `DotsSpinner`, `WaveSpinner`, and `PulseSpinner`.
 
-Remember to import the CSS once in your root layout:
-
-```tsx
-import "next-spinners/next-spinner.css";
-```
+Spinners from `next-spinners` require **`"use client"`** (or a client child component). There is no CSS import for this package.
