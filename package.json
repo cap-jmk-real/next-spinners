@@ -1,0 +1,81 @@
+{
+  "name": "next-spinners",
+  "version": "0.1.0",
+  "description": "Lightweight loading spinners for Next.js and React (App Router friendly, CSS + components).",
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "nextjs",
+    "next",
+    "react",
+    "spinner",
+    "loading",
+    "ui"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./next-spinner.css": "./dist/next-spinner.css"
+  },
+  "files": [
+    "dist",
+    "media/next-spinners-overview.gif"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/copy-css.mjs",
+    "audit": "npm audit --audit-level=high",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "media:gif": "node scripts/capture-overview-gif.mjs",
+    "version:patch": "npm version patch -m \"chore: release %s\"",
+    "version:minor": "npm version minor -m \"chore: release %s\"",
+    "version:major": "npm version major -m \"chore: release %s\"",
+    "ci": "npm run format:check && npm run typecheck && npm run lint && npm run test:coverage",
+    "ci:local": "node scripts/check-version-not-released.mjs && npm run ci && npm run build",
+    "deploy": "npm run ci && npm run build",
+    "prepublishOnly": "npm run ci && npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/coverage-v8": "^4.1.5",
+    "eslint": "^10.3.0",
+    "jsdom": "^27.4.0",
+    "playwright": "^1.59.1",
+    "prettier": "^3.8.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.54.0",
+    "vitest": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
