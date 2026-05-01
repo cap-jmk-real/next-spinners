@@ -7,7 +7,7 @@
 ![Animated overview of agent frame spinners](./media/next-spinners-overview.gif)
 
 The GIF is a vanilla preview of the full spinner grid (same frames and `intervalMs` as the React components). On **npmjs.com**, if the image does not render, use a versioned URL such as  
-`https://unpkg.com/next-spinners@0.2.0/media/next-spinners-overview.gif` (adjust the version after release).
+`https://unpkg.com/next-spinners@0.1.0/media/next-spinners-overview.gif` (adjust the version after release).
 
 ## Install
 
@@ -40,13 +40,13 @@ You can render a client spinner as a child of a Server Component by wrapping it 
 
 ### Props (all ported spinners)
 
-| Prop    | Type              | Default     | Notes                                         |
-| ------- | ----------------- | ----------- | --------------------------------------------- |
-| `size`  | `number`          | `24`        | Maps to `fontSize` (px).                      |
-| `color` | `string`          | `"#fff"`    | CSS color.                                    |
-| `style` | `CSSProperties`   | —           | Merged after base styles.                     |
-| `label` | `string`          | `"Loading"` | `aria-label` on the `status` live region.     |
-| …       | `HTMLSpanElement` | —           | Standard span attributes (`className`, etc.). |
+| Prop     | Type            | Default     | Notes                                      |
+| -------- | --------------- | ----------- | ------------------------------------------ |
+| `size`   | `number`        | `24`        | Maps to `fontSize` (px).                   |
+| `color`  | `string`        | `"#fff"`    | CSS color.                                 |
+| `style`  | `CSSProperties` | —           | Merged after base styles.                  |
+| `label`  | `string`        | `"Loading"` | `aria-label` on the `status` live region.  |
+| …        | `HTMLSpanElement` | —        | Standard span attributes (`className`, etc.). |
 
 ### Factory
 

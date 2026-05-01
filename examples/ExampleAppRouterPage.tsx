@@ -17,15 +17,7 @@ export default function ExampleAppRouterPage() {
       </p>
       <section style={{ marginTop: "2rem" }}>
         <h2>More indicators</h2>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            display: "flex",
-            gap: "1.5rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <ul style={{ listStyle: "none", padding: 0, display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
           <li>
             <WaveSpinner size={22} color="#0d9488" label="Wave" />
           </li>
