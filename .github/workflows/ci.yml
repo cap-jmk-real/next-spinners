@@ -31,5 +31,8 @@ jobs:
       - name: CI
         run: npm run ci
 
+      - name: Security Audit (prod deps)
+        run: npm run audit:prod
+
       - name: Build
         run: npm run build

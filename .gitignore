@@ -1,6 +1,7 @@
 node_modules/
 dist/
 coverage/
+media/_gif_frames/
 *.log
 .DS_Store
 .shiphook.secret

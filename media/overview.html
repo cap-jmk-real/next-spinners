@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>next-spinner-kit overview</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background: radial-gradient(
+          circle at 30% 20%,
+          #1e293b 0%,
+          #0f172a 55%,
+          #020617 100%
+        );
+        color: #e2e8f0;
+      }
+      .panel {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        padding: 2.5rem 3rem;
+        border-radius: 1rem;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      }
+      .demo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        min-width: 7rem;
+      }
+      .demo h2 {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #94a3b8;
+      }
+
+      .nsk {
+        --nsk-color: #38bdf8;
+        --nsk-track: color-mix(in oklch, var(--nsk-color) 18%, transparent);
+        --nsk-size: 1.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        color: var(--nsk-color);
+      }
+
+      .nsk__label {
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.25;
+        color: inherit;
+      }
+
+      .nsk--sm {
+        --nsk-size: 1.25rem;
+      }
+
+      .nsk--md {
+        --nsk-size: 1.75rem;
+      }
+
+      .nsk--lg {
+        --nsk-size: 2.5rem;
+      }
+
+      .nsk--ring .nsk__ring {
+        width: var(--nsk-size);
+        height: var(--nsk-size);
+        border-radius: 999px;
+        border: 2px solid var(--nsk-track);
+        border-top-color: var(--nsk-color);
+        animation: nsk-spin 0.75s linear infinite;
+        box-sizing: border-box;
+        display: block;
+      }
+
+      @keyframes nsk-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .nsk--dots {
+        gap: calc(var(--nsk-size) * 0.18);
+      }
+
+      .nsk--dots .nsk__dot {
+        width: calc(var(--nsk-size) * 0.22);
+        height: calc(var(--nsk-size) * 0.22);
+        border-radius: 999px;
+        background: currentColor;
+        opacity: 0.35;
+        animation: nsk-dot 1.15s infinite ease-in-out;
+      }
+
+      .nsk--dots .nsk__dot:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+
+      .nsk--dots .nsk__dot:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+
+      @keyframes nsk-dot {
+        0%,
+        80%,
+        100% {
+          opacity: 0.25;
+          transform: translateY(0);
+        }
+        40% {
+          opacity: 1;
+          transform: translateY(calc(var(--nsk-size) * -0.08));
+        }
+      }
+
+      .nsk--bars {
+        gap: calc(var(--nsk-size) * 0.12);
+        height: var(--nsk-size);
+      }
+
+      .nsk--bars .nsk__bar {
+        width: calc(var(--nsk-size) * 0.16);
+        height: 70%;
+        border-radius: 999px;
+        background: currentColor;
+        opacity: 0.35;
+        animation: nsk-bar 0.9s infinite ease-in-out;
+        align-self: flex-end;
+      }
+
+      .nsk--bars .nsk__bar:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+
+      .nsk--bars .nsk__bar:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+
+      @keyframes nsk-bar {
+        0%,
+        100% {
+          opacity: 0.3;
+          height: 45%;
+        }
+        50% {
+          opacity: 1;
+          height: 100%;
+        }
+      }
+
+      .caption {
+        margin-top: 1.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 0.875rem;
+        color: #cbd5e1;
+      }
+
+      .caption .nsk {
+        --nsk-color: #a78bfa;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="panel" aria-label="next-spinner-kit variants">
+        <div class="demo">
+          <h2>Ring</h2>
+          <div
+            class="nsk nsk--ring nsk--lg"
+            role="status"
+            aria-live="polite"
+            aria-label="Ring"
+          >
+            <span class="nsk__ring" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="demo">
+          <h2>Dots</h2>
+          <div
+            class="nsk nsk--dots nsk--lg"
+            role="status"
+            aria-live="polite"
+            aria-label="Dots"
+          >
+            <span class="nsk__dot" aria-hidden="true"></span>
+            <span class="nsk__dot" aria-hidden="true"></span>
+            <span class="nsk__dot" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="demo">
+          <h2>Bars</h2>
+          <div
+            class="nsk nsk--bars nsk--lg"
+            role="status"
+            aria-live="polite"
+            aria-label="Bars"
+          >
+            <span class="nsk__bar" aria-hidden="true"></span>
+            <span class="nsk__bar" aria-hidden="true"></span>
+            <span class="nsk__bar" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+      <p class="caption">
+        With caption:
+        <span
+          class="nsk nsk--ring nsk--md"
+          role="status"
+          aria-live="polite"
+          aria-label="Saving"
+        >
+          <span class="nsk__ring" aria-hidden="true"></span>
+          <span class="nsk__label">Saving…</span>
+        </span>
+      </p>
+    </div>
+  </body>
+</html>
