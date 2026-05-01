@@ -1,9 +1,8 @@
+# Runs on push to main (after merge). CI is PR-only; this job re-runs checks then publishes.
 name: Publish to npm
 
 on:
-  workflow_run:
-    workflows: ["CI"]
-    types: [completed]
+  push:
     branches: [main]
 
 permissions:
@@ -11,13 +10,9 @@ permissions:
 
 jobs:
   publish:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout commit that passed CI
-        uses: actions/checkout@v5
-        with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/checkout@v5
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -26,8 +21,19 @@ jobs:
           cache: "npm"
           registry-url: "https://registry.npmjs.org/"
 
+      - name: Check version not already released
+        env:
+          GITHUB_ACTIONS: "true"
+        run: node scripts/check-version-not-released.mjs
+
       - name: Install
         run: npm ci
+
+      - name: CI
+        run: npm run ci
+
+      - name: Security Audit (prod deps)
+        run: npm run audit:prod
 
       - name: Build
         run: npm run build
