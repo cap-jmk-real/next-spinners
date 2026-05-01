@@ -26,7 +26,7 @@ const sizeClass: Record<NextSpinnerSize, string> = {
 
 /**
  * Loading indicator for Next.js / React. Works in Server Components (no `"use client"`).
- * Import styles once: `import "next-spinner-kit/next-spinner.css"`.
+ * Import styles once: `import "next-spinners/next-spinner.css"`.
  */
 export function NextSpinner({
   variant = "ring",

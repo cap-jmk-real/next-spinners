@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const htmlPath = join(root, "media", "overview.html");
 const framesDir = join(root, "media", "_gif_frames");
-const outGif = join(root, "media", "next-spinner-kit-overview.gif");
+const outGif = join(root, "media", "next-spinners-overview.gif");
 
 async function tryLaunch(chromium) {
   const attempts = [

@@ -1,5 +1,5 @@
 {
-  "name": "next-spinner-kit",
+  "name": "next-spinners",
   "version": "0.1.0",
   "description": "Lightweight loading spinners for Next.js and React (App Router friendly, CSS + components).",
   "license": "MIT",
@@ -33,7 +33,7 @@
   },
   "files": [
     "dist",
-    "media/next-spinner-kit-overview.gif"
+    "media/next-spinners-overview.gif"
   ],
   "scripts": {
     "build": "tsup && node scripts/copy-css.mjs",
@@ -46,7 +46,11 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "media:gif": "node scripts/capture-overview-gif.mjs",
+    "version:patch": "npm version patch -m \"chore: release %s\"",
+    "version:minor": "npm version minor -m \"chore: release %s\"",
+    "version:major": "npm version major -m \"chore: release %s\"",
     "ci": "npm run format:check && npm run typecheck && npm run lint && npm run test:coverage",
+    "ci:local": "node scripts/check-version-not-released.mjs && npm run ci && npm run build",
     "deploy": "npm run ci && npm run build",
     "prepublishOnly": "npm run ci && npm run build"
   },

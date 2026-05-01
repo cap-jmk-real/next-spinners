@@ -3,10 +3,10 @@
  * stylesheet once in `app/layout.tsx`:
  *
  * ```tsx
- * import "next-spinner-kit/next-spinner.css";
+ * import "next-spinners/next-spinner.css";
  * ```
  */
-import { NextSpinner } from "next-spinner-kit";
+import { NextSpinner } from "next-spinners";
 
 export default function ExampleAppRouterPage() {
   return (

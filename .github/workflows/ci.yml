@@ -10,7 +10,21 @@ env:
   NODE_VERSION: "22"
 
 jobs:
+  version_guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Check version not already released
+        run: node scripts/check-version-not-released.mjs
+
   test:
+    needs: version_guard
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

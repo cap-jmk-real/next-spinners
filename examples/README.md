@@ -7,5 +7,5 @@ See [`ExampleAppRouterPage.tsx`](./ExampleAppRouterPage.tsx) for a full page tha
 Remember to import the CSS once in your root layout:
 
 ```tsx
-import "next-spinner-kit/next-spinner.css";
+import "next-spinners/next-spinner.css";
 ```
