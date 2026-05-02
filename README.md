@@ -31,7 +31,7 @@ export function Row() {
 }
 ```
 
-![Spinner overview](https://unpkg.com/next-spinners@0.1.2/media/next-spinners-overview.gif)
+![Spinner overview](./media/next-spinners-overview.gif)
 
 ## License
 
