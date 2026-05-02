@@ -1,6 +1,6 @@
 {
   "name": "next-spinners",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Braille / ASCII frame loading spinners for Next.js and React (Client Components, inline styles).",
   "license": "MIT",
   "author": "",
