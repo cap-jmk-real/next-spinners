@@ -1,8 +1,15 @@
 node_modules/
 dist/
 coverage/
+docs/node_modules/
+docs/.vitepress/cache
+docs/.vitepress/dist
+docs/public/
+docs/media/
+docs/examples/
 media/_gif_frames/
 *.log
 .DS_Store
 .shiphook.secret
 .shiphook/logs/
+.expo-spinners-src/

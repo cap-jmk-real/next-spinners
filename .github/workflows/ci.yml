@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [main, dev]
   pull_request:
     branches: [main, dev]
 
@@ -29,8 +27,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
+      # Must run before checkout so the clone respects LF (Prettier `endOfLine: "lf"`).
+      - name: Git — LF checkouts on Windows
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
       - uses: actions/checkout@v5
 
       - name: Setup Node

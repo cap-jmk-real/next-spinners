@@ -1,13 +1,8 @@
 # next-spinners
 
-Small, accessible loading indicators for **Next.js** and **React**. Components are **Server Component friendly** (no `"use client"` required). Styles ship as a separate CSS file you import once.
+Braille / Unicode **frame spinners** for **React** and **Next.js**. Client Components only; inline styles (no CSS import). Based on [expo-agent-spinners](https://github.com/Eronred/expo-agent-spinners).
 
-## Preview
-
-![Animated overview of ring, dots, and bars spinners](./media/next-spinners-overview.gif)
-
-The GIF is shipped in the npm package under `media/` so this relative path works on GitHub. On **npmjs.com**, if the image does not render, use the versioned file URL instead, for example:  
-`https://unpkg.com/next-spinners@0.1.0/media/next-spinners-overview.gif` (bump the version after each release).
+**Documentation:** [next-spinners docs](https://cap-jmk-real.github.io/next-spinners/)
 
 ## Install
 
@@ -15,57 +10,28 @@ The GIF is shipped in the npm package under `media/` so this relative path works
 npm install next-spinners
 ```
 
-Requires **Node 22+** (matches [Shiphook](https://github.com/cap-jmk-real/shiphook) and modern Next.js toolchains).
+Requires **Node 22+**. Peer: `react`, `react-dom` ^18 || ^19.
 
-## Usage (App Router)
+## Usage
 
-Import the stylesheet once in your root layout:
-
-```tsx
-// app/layout.tsx
-import "next-spinners/next-spinner.css";
-```
-
-Use the spinner anywhere (Server or Client Components):
+Use inside a Client Component (or a `"use client"` module). Imports are server-incompatible because spinners use `useState` + `setInterval`.
 
 ```tsx
-import { NextSpinner } from "next-spinners";
+"use client";
 
-export default function Page() {
+import { DotsSpinner } from "next-spinners";
+
+export function Row() {
   return (
-    <p>
-      <NextSpinner variant="ring" size="md" label="Loading dashboard" />
+    <p style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+      <DotsSpinner size={24} color="currentColor" label="Loading" />
+      <span>Loading…</span>
     </p>
   );
 }
 ```
 
-### Variants and sizes
-
-- **variant**: `"ring"` (default) | `"dots"` | `"bars"`
-- **size**: `"sm"` | `"md"` (default) | `"lg"`
-
-### Theming
-
-Override the accent color with CSS on a wrapper or globally:
-
-```css
-.my-panel .nsk {
-  --nsk-color: #10b981;
-}
-```
-
-### Caption
-
-Pass children to show text beside the indicator:
-
-```tsx
-<NextSpinner label="Loading">Fetching data…</NextSpinner>
-```
-
-## Full page example
-
-See [`examples/ExampleAppRouterPage.tsx`](./examples/ExampleAppRouterPage.tsx) for a ready-to-copy App Router page that exercises all variants.
+![Spinner overview](./media/next-spinners-overview.gif)
 
 ## License
 

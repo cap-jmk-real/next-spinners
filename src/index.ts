@@ -1,6 +1,5 @@
-export { NextSpinner } from "./NextSpinner";
-export type {
-  NextSpinnerProps,
-  NextSpinnerSize,
-  NextSpinnerVariant,
-} from "./NextSpinner";
+export {
+  createAgentFrameSpinner,
+  type AgentFrameSpinnerProps,
+} from "./agent-frame-spinner";
+export * from "./spinners";

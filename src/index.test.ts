@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
-import * as entry from "./index";
+import { BounceSpinner, DotsSpinner, createAgentFrameSpinner } from "./index";
 
 describe("package entry", () => {
-  it("exports NextSpinner", () => {
-    expect(entry.NextSpinner).toBeTypeOf("function");
+  it("exports frame-spinner factory and ported spinners", () => {
+    expect(createAgentFrameSpinner).toBeTypeOf("function");
+    expect(DotsSpinner).toBeTypeOf("function");
+    expect(BounceSpinner).toBeTypeOf("function");
   });
 });
