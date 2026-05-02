@@ -40,13 +40,13 @@ You can render a client spinner as a child of a Server Component by wrapping it 
 
 ### Props (all ported spinners)
 
-| Prop     | Type            | Default     | Notes                                      |
-| -------- | --------------- | ----------- | ------------------------------------------ |
-| `size`   | `number`        | `24`        | Maps to `fontSize` (px).                   |
-| `color`  | `string`        | `"#fff"`    | CSS color.                                 |
-| `style`  | `CSSProperties` | —           | Merged after base styles.                  |
-| `label`  | `string`        | `"Loading"` | `aria-label` on the `status` live region.  |
-| …        | `HTMLSpanElement` | —        | Standard span attributes (`className`, etc.). |
+| Prop    | Type              | Default     | Notes                                         |
+| ------- | ----------------- | ----------- | --------------------------------------------- |
+| `size`  | `number`          | `24`        | Maps to `fontSize` (px).                      |
+| `color` | `string`          | `"#fff"`    | CSS color.                                    |
+| `style` | `CSSProperties`   | —           | Merged after base styles.                     |
+| `label` | `string`          | `"Loading"` | `aria-label` on the `status` live region.     |
+| …       | `HTMLSpanElement` | —           | Standard span attributes (`className`, etc.). |
 
 ### Factory
 

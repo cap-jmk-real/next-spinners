@@ -89,8 +89,7 @@
       }
       .agent-glyph {
         font-family:
-          ui-monospace, SFMono-Regular, "Cascadia Code", "Segoe UI Mono",
-          monospace;
+          ui-monospace, SFMono-Regular, "Cascadia Code", "Segoe UI Mono", monospace;
         font-size: 1.15rem;
         line-height: 1.25;
         color: #7dd3fc;
@@ -109,24 +108,26 @@
       }
     </style>
     <script type="application/json" id="spinner-snapshot">
-[]
+      []
     </script>
   </head>
   <body>
     <div class="page">
       <h1>next-spinners</h1>
       <p class="subtitle">
-        Ported expo-agent-spinners: Unicode / Braille frame animation in React
-        (Client Components). This page previews the same frames and
-        <code style="color: #7dd3fc">intervalMs</code> as the npm package via
-        vanilla <code style="color: #7dd3fc">setInterval</code>.
+        Ported expo-agent-spinners: Unicode / Braille frame animation in React (Client
+        Components). This page previews the same frames and
+        <code style="color: #7dd3fc">intervalMs</code> as the npm package via vanilla
+        <code style="color: #7dd3fc">setInterval</code>.
       </p>
 
       <p class="section-title">Agent frame spinners</p>
       <div class="agent-wrap">
         <p class="agent-note" id="agent-count-note">
           Run
-          <code style="color: #7dd3fc">node scripts/build-spinner-frames-snapshot.mjs</code>
+          <code style="color: #7dd3fc"
+            >node scripts/build-spinner-frames-snapshot.mjs</code
+          >
           after changing <code style="color: #7dd3fc">src/spinners</code>.
         </p>
         <div class="agent-grid" id="agent-grid" aria-label="Agent spinners grid"></div>
