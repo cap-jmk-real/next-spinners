@@ -83,7 +83,7 @@ Export a const so the component identity is stable.
 
 The repo ships **`media/next-spinners-overview.gif`**. On **npmjs.com**, relative images sometimes fail; you can link a versioned file from unpkg, for example:
 
-`https://unpkg.com/next-spinners@0.1.1/media/next-spinners-overview.gif` (adjust the version to match the release).
+`https://unpkg.com/next-spinners@0.1.2/media/next-spinners-overview.gif` (pin the version to the release you publish).
 
 ## Further reading
 
