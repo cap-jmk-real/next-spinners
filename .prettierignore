@@ -1,3 +1,9 @@
 dist/
 coverage/
 node_modules/
+docs/node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/public/
+docs/media/
+docs/examples/

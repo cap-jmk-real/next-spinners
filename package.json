@@ -48,6 +48,8 @@
     "version:minor": "npm version minor -m \"chore: release %s\"",
     "version:major": "npm version major -m \"chore: release %s\"",
     "ci": "npm run format:check && npm run typecheck && npm run lint && npm run test:coverage",
+    "docs:dev": "npm run dev --prefix docs",
+    "docs:build": "npm run build --prefix docs",
     "ci:local": "node scripts/check-version-not-released.mjs && npm run ci && npm run build",
     "deploy": "npm run ci && npm run build",
     "prepublishOnly": "npm run ci && npm run build"
