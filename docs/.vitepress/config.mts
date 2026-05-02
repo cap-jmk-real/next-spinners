@@ -11,6 +11,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
+      { text: "Guide", link: "/guide" },
       {
         text: "npm",
         link: "https://www.npmjs.com/package/next-spinners",
@@ -20,7 +21,12 @@ export default defineConfig({
         link: "https://github.com/cap-jmk-real/next-spinners",
       },
     ],
-    sidebar: [{ text: "Documentation", link: "/" }],
+    sidebar: [
+      { text: "Introduction", link: "/" },
+      { text: "Guide", link: "/guide" },
+      { text: "Expo → export mapping", link: "/reference/expo-mapping" },
+      { text: "Maintainers", link: "/maintainers" },
+    ],
     socialLinks: [
       {
         icon: "github",

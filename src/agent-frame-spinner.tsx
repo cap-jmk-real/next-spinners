@@ -2,6 +2,7 @@
 
 import {
   useEffect,
+  useMemo,
   useState,
   type ComponentType,
   type CSSProperties,
@@ -14,7 +15,11 @@ export type AgentFrameSpinnerProps = Omit<
 > & {
   /** Pixel font size (expo-agent-spinners default: 24). */
   size?: number;
-  /** Foreground color. */
+  /**
+   * Foreground color (maps to CSS `color`). Merged before `style`, so a color in
+   * `style` wins — use `color="currentColor"` to inherit the parent text color,
+   * or `style={{ color: "var(--your-token)" }}` for design tokens.
+   */
   color?: string;
   style?: CSSProperties;
   /**
@@ -22,6 +27,13 @@ export type AgentFrameSpinnerProps = Omit<
    * @defaultValue "Loading"
    */
   label?: string;
+  /** Milliseconds between frames; overrides factory default and wins over `durationMs`. */
+  intervalMs?: number;
+  /**
+   * Milliseconds for one full loop (`interval ≈ durationMs / frame count`, rounded).
+   * Ignored when `intervalMs` is set.
+   */
+  durationMs?: number;
 };
 
 /**
@@ -30,7 +42,7 @@ export type AgentFrameSpinnerProps = Omit<
  */
 export function createAgentFrameSpinner(
   frames: readonly string[],
-  intervalMs: number,
+  baseIntervalMs: number,
   displayName: string,
 ): ComponentType<AgentFrameSpinnerProps> {
   function FrameSpinner({
@@ -40,16 +52,33 @@ export function createAgentFrameSpinner(
     label = "Loading",
     className = "",
     role = "status",
+    intervalMs: intervalMsProp,
+    durationMs,
     ...rest
   }: AgentFrameSpinnerProps) {
     const [frame, setFrame] = useState(0);
 
+    const tickMs = useMemo(() => {
+      if (intervalMsProp != null && Number.isFinite(intervalMsProp)) {
+        return Math.max(1, Math.round(intervalMsProp));
+      }
+      if (
+        durationMs != null &&
+        Number.isFinite(durationMs) &&
+        durationMs > 0 &&
+        frames.length > 0
+      ) {
+        return Math.max(1, Math.round(durationMs / frames.length));
+      }
+      return baseIntervalMs;
+    }, [intervalMsProp, durationMs, baseIntervalMs, frames.length]);
+
     useEffect(() => {
       const id = setInterval(() => {
         setFrame((i) => (i + 1) % frames.length);
-      }, intervalMs);
+      }, tickMs);
       return () => clearInterval(id);
-    }, [frames.length, intervalMs]);
+    }, [frames.length, tickMs]);
 
     const merged: CSSProperties = {
       fontSize: size,

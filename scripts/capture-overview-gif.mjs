@@ -39,21 +39,22 @@ async function main() {
 
   const browser = await tryLaunch(chromium);
   const page = await browser.newPage({
-    viewport: { width: 960, height: 1400 },
+    viewport: { width: 960, height: 1680 },
   });
 
   await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "load" });
   await page.evaluate(() => document.fonts?.ready ?? Promise.resolve());
 
   /**
-   * GIF pacing (tune here for a ~2–4s, easy-to-read loop):
-   * - CAPTURE_FRAME_INTERVAL_MS: wall-clock delay between Playwright screenshots.
-   *   Higher = slower motion in source frames (was 45ms).
-   * - CAPTURE_FRAME_COUNT: how many PNGs we stitch; with interval 100ms, 36 frames ≈ 3.6s capture.
-   * - FFMPEG_FPS: output frame rate; duration ≈ CAPTURE_FRAME_COUNT / FFMPEG_FPS (e.g. 36/12 = 3s).
+   * GIF pacing: keep many frames + dense capture for smooth motion; use a **modest
+   * FFMPEG_FPS** so the same frames play back slower (longer loop, easier to read).
+   * - CAPTURE_FRAME_INTERVAL_MS: delay between Playwright screenshots.
+   * - CAPTURE_FRAME_COUNT: PNGs per loop.
+   * - FFMPEG_FPS: output playback rate — lower = slower animation, same smoothness.
+   * Duration ≈ CAPTURE_FRAME_COUNT / FFMPEG_FPS seconds.
    */
-  const CAPTURE_FRAME_INTERVAL_MS = 100;
-  const CAPTURE_FRAME_COUNT = 36;
+  const CAPTURE_FRAME_INTERVAL_MS = 55;
+  const CAPTURE_FRAME_COUNT = 180;
   const FFMPEG_FPS = 12;
 
   for (let i = 0; i < CAPTURE_FRAME_COUNT; i++) {
