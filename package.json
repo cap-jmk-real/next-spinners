@@ -77,6 +77,8 @@
     "docs:dev": "npm run dev --prefix docs",
     "docs:build": "npm run build --prefix docs",
     "ci:local": "node scripts/check-version-not-released.mjs && npm run ci && npm run build",
+    "git:require-clean": "node scripts/assert-git-clean.mjs",
+    "ci:verify": "npm run ci && npm run git:require-clean",
     "deploy": "npm run ci && npm run build",
     "prepublishOnly": "npm run ci && npm run build"
   },
