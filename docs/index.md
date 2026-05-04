@@ -1,5 +1,6 @@
 ---
-outline: deep
+title: Introduction
+outline: true
 ---
 
 # next-spinners
@@ -25,6 +26,7 @@ import { DotsSpinner } from "next-spinners";
 ```
 
 - **[Guide](/guide)** — client boundary, props, theming, custom frames, App Router
+- **[Live gallery (by origin)](/reference/spinner-gallery)** — every frame spinner, rendered in the browser (no GIFs)
 - **[Expo → export mapping](/reference/expo-mapping)** — upstream demo keys and all named exports
 - **[Maintainers](/maintainers)** — regenerating modules and preview assets
 

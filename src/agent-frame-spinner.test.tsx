@@ -66,4 +66,16 @@ describe("createAgentFrameSpinner", () => {
     });
     expect(screen.getByRole("status", { name: "Interval prefer" }).textContent).toBe("y");
   });
+
+  it("injects dotmatrix keyframes stylesheet once", () => {
+    render(
+      <>
+        <TinySpinner label="A" effect="dotmatrix" />
+        <TinySpinner label="B" effect="dotmatrix" />
+      </>,
+    );
+    const nodes = document.querySelectorAll("#next-spinners-dotmatrix-kf");
+    expect(nodes.length).toBe(1);
+    expect(nodes[0]?.textContent).toContain("@keyframes next-spinners-dm-gradient");
+  });
 });

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-mixed-x-post-pack",
+  "title": "next-spinners — XPostQuadrantBrailleOrSpinner",
+  "description": "Braille/Unicode frame spinner: XPostQuadrantBrailleOrSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/mixed-x-post-pack.tsx",
+      "content": "\"use client\";\n\n/**\n * Four deterministic “novel” spinners for social posts — built with\n * {@link createMixedFrameSpinner} from `../mix-frame-spinners`.\n * Frame literals mirror `src/spinners/*.tsx` sources (keep in sync if those change).\n */\nimport { createMixedFrameSpinner } from \"../mix-frame-spinners\";\n\n/** @see `./dots` */\nconst DOTS_FRAMES = [\"⠋\", \"⠙\", \"⠹\", \"⠸\", \"⠼\", \"⠴\", \"⠦\", \"⠧\", \"⠇\", \"⠏\"] as const;\n\n/** @see `./dots2` */\nconst DOTS2_FRAMES = [\"⣾\", \"⣽\", \"⣻\", \"⢿\", \"⡿\", \"⣟\", \"⣯\", \"⣷\"] as const;\n\n/** @see `./dots3` */\nconst DOTS3_FRAMES = [\"⠋\", \"⠙\", \"⠚\", \"⠞\", \"⠖\", \"⠦\", \"⠴\", \"⠲\", \"⠳\", \"⠓\"] as const;\n\n/** @see `./dots4` */\nconst DOTS4_FRAMES = [\n  \"⠄\",\n  \"⠆\",\n  \"⠇\",\n  \"⠋\",\n  \"⠙\",\n  \"⠸\",\n  \"⠰\",\n  \"⠠\",\n  \"⠰\",\n  \"⠸\",\n  \"⠙\",\n  \"⠋\",\n  \"⠇\",\n  \"⠆\",\n] as const;\n\n/** @see `./bounce` */\nconst BOUNCE_FRAMES = [\"⠁\", \"⠂\", \"⠄\", \"⡀\", \"⠄\", \"⠂\"] as const;\n\n/** @see `./dqpb` */\nconst DQPB_FRAMES = [\"d\", \"q\", \"p\", \"b\"] as const;\n\n/** OR-fusion of four classic dot loops — dense “supernova” Braille. */\nexport const XPostQuadrantBrailleOrSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, DOTS2_FRAMES, DOTS3_FRAMES, DOTS4_FRAMES],\n  { type: \"braille-or\", maxPeriod: 96 },\n  72,\n  \"XPostQuadrantBrailleOrSpinner\",\n);\n\n/** OR-fusion of three rhythms (dots + bounce + dots2). */\nexport const XPostTrioBrailleOrSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, BOUNCE_FRAMES, DOTS2_FRAMES],\n  { type: \"braille-or\", maxPeriod: 72 },\n  80,\n  \"XPostTrioBrailleOrSpinner\",\n);\n\n/** Full `dqpb` cycle, then full dots cycle — ASCII ↔ Braille handoff. */\nexport const XPostAsciiBrailleCarouselSpinner = createMixedFrameSpinner(\n  [DQPB_FRAMES, DOTS_FRAMES],\n  { type: \"carousel\", repeat: 1 },\n  90,\n  \"XPostAsciiBrailleCarouselSpinner\",\n);\n\n/** Strobe scan: for each beat, show one frame from dots, then one from dots2, repeat. */\nexport const XPostDotsScanRoundRobinSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, DOTS2_FRAMES],\n  { type: \"scan-round-robin\" },\n  55,\n  \"XPostDotsScanRoundRobinSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

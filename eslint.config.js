@@ -6,11 +6,15 @@ export default tseslint.config(
     ignores: [
       "dist/**",
       "coverage/**",
+      "vendor/**",
       "scripts/**",
       "eslint.config.js",
       "docs/node_modules/**",
-      "docs/.vitepress/dist/**",
-      "docs/.vitepress/cache/**",
+      "docs/dist/**",
+      "docs/.rspress/**",
+      /** Synced copy of `examples/` for the docs site — may contain `.next/` build output. */
+      "docs/examples/**",
+      "examples/**",
     ],
   },
   eslint.configs.recommended,

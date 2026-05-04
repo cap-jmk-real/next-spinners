@@ -1,12 +1,12 @@
 {
   "name": "next-spinners",
   "version": "0.1.2",
-  "description": "Braille / ASCII frame loading spinners for Next.js and React (Client Components, inline styles).",
+  "description": "Braille / Unicode frame spinners for Next.js/React; ships Loading UI registry components as next-spinners/loading-ui; vendors full upstream trees under vendor/.",
   "license": "MIT",
   "author": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/cap-jmk-real/next-spinners.git"
   },
   "keywords": [
     "nextjs",
@@ -14,7 +14,9 @@
     "react",
     "spinner",
     "loading",
-    "ui"
+    "ui",
+    "shadcn",
+    "registry"
   ],
   "type": "module",
   "sideEffects": false,
@@ -26,11 +28,27 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./loading-ui": {
+      "types": "./dist/loading-ui.d.ts",
+      "import": "./dist/loading-ui.js",
+      "require": "./dist/loading-ui.cjs"
     }
   },
   "files": [
     "dist",
-    "media/next-spinners-overview.gif"
+    "media/next-spinners-overview.gif",
+    "media/next-spinners-dotmatrix-overview.gif",
+    "media/next-spinners-dotmatrix-overview-rows4.gif",
+    "media/next-spinners-loading-ui-overview.gif",
+    "media/next-spinners-mixed-x-showcase.gif",
+    "media/readme-source-expo.gif",
+    "media/readme-source-next-spinners.gif",
+    "vendor/README.md",
+    "vendor/loading-ui",
+    "vendor/dot-matrix",
+    "registry",
+    "components.json.example"
   ],
   "scripts": {
     "build": "tsup",
@@ -43,11 +61,19 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "media:snapshot": "node scripts/build-spinner-frames-snapshot.mjs",
+    "media:readme-pages": "node scripts/build-readme-attribution-pages.mjs",
+    "media:readme-gifs": "node scripts/capture-readme-attribution-gifs.mjs",
     "media:gif": "node scripts/capture-overview-gif.mjs",
+    "media:gif:dotmatrix": "node scripts/capture-dotmatrix-overview-gif.mjs",
+    "media:gif:loading-ui": "node scripts/capture-loading-ui-overview-gif.mjs",
+    "media:gif:mixed-x": "node scripts/capture-mixed-x-showcase-gif.mjs",
+    "port:loading-ui": "node scripts/port-loading-ui-to-src.mjs",
+    "vendor:sync": "node scripts/vendor-sync.mjs",
+    "registry:shadcn": "node scripts/build-shadcn-registry.mjs",
     "version:patch": "npm version patch -m \"chore: release %s\"",
     "version:minor": "npm version minor -m \"chore: release %s\"",
     "version:major": "npm version major -m \"chore: release %s\"",
-    "ci": "npm run format:check && npm run typecheck && npm run lint && npm run test:coverage",
+    "ci": "npm run registry:shadcn && npm run format:check && npm run typecheck && npm run lint && npm run test:coverage",
     "docs:dev": "npm run dev --prefix docs",
     "docs:build": "npm run build --prefix docs",
     "ci:local": "node scripts/check-version-not-released.mjs && npm run ci && npm run build",
@@ -56,9 +82,15 @@
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.6.0 || ^3.0.0",
+    "motion": "^12.0.0"
   },
   "devDependencies": {
+    "clsx": "^2.1.1",
+    "motion": "^12.23.12",
+    "tailwind-merge": "^3.5.0",
     "@eslint/js": "^9.39.2",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.14",

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-square-corners",
+  "title": "next-spinners — SquareCornersSpinner",
+  "description": "Braille/Unicode frame spinner: SquareCornersSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/square-corners.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◰\", \"◳\", \"◲\", \"◱\"] as const;\n\nexport const SquareCornersSpinner = createAgentFrameSpinner(\n  FRAMES,\n  180,\n  \"SquareCornersSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

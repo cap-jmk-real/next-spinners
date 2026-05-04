@@ -9,7 +9,7 @@ const spinnerEntries = Object.entries(Spinners).filter(
 
 describe("expo-agent-spinners ports", () => {
   it("exports one component per spinner file", () => {
-    expect(spinnerEntries.length).toBe(66);
+    expect(spinnerEntries.length).toBe(70);
   });
 
   it("smoke-renders every exported spinner (sequential unmount)", () => {

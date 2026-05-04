@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #020617;
+  color: #e2e8f0;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    "Segoe UI Symbol",
+    "Noto Sans Symbols 2",
+    Roboto,
+    sans-serif;
+  /* Headless capture: ensure Braille block (U+2800…) has a glyph before screenshots */
+  font-synthesis: none;
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-columns",
+  "title": "next-spinners — ColumnsSpinner",
+  "description": "Braille/Unicode frame spinner: ColumnsSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/columns.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⡀⠀⠀\",\n  \"⡄⠀⠀\",\n  \"⡆⠀⠀\",\n  \"⡇⠀⠀\",\n  \"⣇⠀⠀\",\n  \"⣧⠀⠀\",\n  \"⣷⠀⠀\",\n  \"⣿⠀⠀\",\n  \"⣿⡀⠀\",\n  \"⣿⡄⠀\",\n  \"⣿⡆⠀\",\n  \"⣿⡇⠀\",\n  \"⣿⣇⠀\",\n  \"⣿⣧⠀\",\n  \"⣿⣷⠀\",\n  \"⣿⣿⠀\",\n  \"⣿⣿⡀\",\n  \"⣿⣿⡄\",\n  \"⣿⣿⡆\",\n  \"⣿⣿⡇\",\n  \"⣿⣿⣇\",\n  \"⣿⣿⣧\",\n  \"⣿⣿⣷\",\n  \"⣿⣿⣿\",\n  \"⣿⣿⣿\",\n  \"⠀⠀⠀\",\n] as const;\n\nexport const ColumnsSpinner = createAgentFrameSpinner(FRAMES, 60, \"ColumnsSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

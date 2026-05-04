@@ -1,0 +1,37 @@
+/**
+ * Docs chrome in the spirit of loading-ui.com/docs:
+ * zinc / near-black surfaces, emerald accent.
+ * Rspress default theme reads --rp-* tokens (see @rspress/theme-default).
+ */
+
+:root {
+  color-scheme: dark;
+}
+
+:root,
+html.dark {
+  --rp-c-bg: #09090b;
+  --rp-c-bg-soft: #18181b;
+  --rp-c-bg-mute: #27272a;
+  --rp-c-text: #fafafa;
+  --rp-c-text-1: #e4e4e7;
+  --rp-c-text-2: #a1a1aa;
+  --rp-c-text-3: #71717a;
+  --rp-c-text-4: #52525b;
+  --rp-c-divider: #27272a;
+  --rp-c-divider-light: #3f3f46;
+  --rp-c-brand: #34d399;
+  --rp-c-brand-dark: #10b981;
+  --rp-c-brand-light: #6ee7b7;
+  --rp-c-brand-tint: rgba(52, 211, 153, 0.12);
+  --rp-c-gray-light-1: #a1a1aa;
+  --rp-c-gray-light-2: #71717a;
+  --rp-c-gray-light-3: #52525b;
+  --rp-c-link: #34d399;
+  --rp-c-link-hover: #6ee7b7;
+  --rp-code-block-bg: #0c0c0e;
+  --rp-code-title-bg: #18181b;
+  --rp-radius: 10px;
+  --rp-radius-small: 6px;
+  --rp-nav-height: 56px;
+}

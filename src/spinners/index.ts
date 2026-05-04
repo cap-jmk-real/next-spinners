@@ -40,6 +40,12 @@ export { HaloSpinner } from "./halo";
 export { HeartsSpinner } from "./hearts";
 export { HelixSpinner } from "./helix";
 export { MoonSpinner } from "./moon";
+export {
+  XPostAsciiBrailleCarouselSpinner,
+  XPostDotsScanRoundRobinSpinner,
+  XPostQuadrantBrailleOrSpinner,
+  XPostTrioBrailleOrSpinner,
+} from "./mixed-x-post-pack";
 export { NoiseSpinner } from "./noise";
 export { NovaSpinner } from "./nova";
 export { OrbitSpinner } from "./orbit";

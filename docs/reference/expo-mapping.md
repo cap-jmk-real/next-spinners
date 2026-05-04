@@ -1,10 +1,13 @@
 ---
-outline: deep
+title: Expo → export mapping
+outline: true
 ---
 
 # Expo demo name → named export
 
 The [upstream Expo demo](https://github.com/Eronred/expo-agent-spinners) names spinners with string keys. This package exposes each as a **PascalCase `*Spinner` component**. Frames and `intervalMs` match that demo unless noted in the main repo.
+
+**Live previews (grouped by origin, rendered in the docs site):** [Spinner gallery](/reference/spinner-gallery).
 
 ## Upstream keys (55)
 
@@ -72,4 +75,6 @@ These do not have an Expo demo key; they exist only in **next-spinners**:
 
 `AuroraSpinner`, `BloomSpinner`, `EchoSpinner`, `FlowSpinner`, `GleamSpinner`, `HaloSpinner`, `NovaSpinner`, `PrismSpinner`, `RandomSpinner`, `RippleSpinner`, `ZenSpinner`.
 
-**Total named spinners:** 66 (`src/spinners/*.tsx`, excluding `index.ts`).
+**Total named spinners:** 70 — 55 Expo lineage + 11 package-only + 4 mixed-frame (`mixed-x-post-pack`).
+
+For **all** [Loading UI](https://loading-ui.com/) and [Dot Matrix](https://dotmatrix.zzzzshawn.cloud/) loader sources (MIT), this repository vendors full upstream trees under `vendor/loading-ui` and `vendor/dot-matrix`—see `vendor/README.md`. They are not re-exported from the `next-spinners` npm entry (frame spinners only).

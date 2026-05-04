@@ -1,4 +1,4 @@
-# VitePress docs → GitHub Pages. Runs when `main` updates (e.g. after PR merge).
+# Rspress docs (React + MDX) → GitHub Pages. Runs when `main` updates (e.g. after PR merge).
 # This repo’s CI is PR-only, so we do not use workflow_run on "CI" (it would not
 # run on push to main). One-time: Settings → Pages → Source = "GitHub Actions".
 # Pattern adapted from https://github.com/cap-jmk-real/shiphook (.github/workflows/docs.yml).
@@ -45,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: docs/.vitepress/dist
+          path: docs/dist
 
   deploy:
     needs: build

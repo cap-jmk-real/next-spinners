@@ -1,0 +1,98 @@
+---
+title: Pulse dot
+description: A single pulsing dot for chat and assistant UIs—the same minimal cue ChatGPT shows while a reply is generating.
+---
+
+[ChatGPT](https://chatgpt.com) uses this directly in the chat surface: one small dot that pulses at the end of the assistant turn until streamed text appears. `PulseDot` is the same pattern for your own products—copilots, support bots, and composer footers where a full spinner would feel heavy.
+
+<ComponentPreview name="pulse-dot-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @loading-ui/pulse-dot
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pulse-dot" title="components/loading-ui/pulse-dot.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { PulseDot } from "@/components/loading-ui/pulse-dot";
+```
+
+```tsx
+<PulseDot />
+```
+
+## Customization
+
+The dot is a `rounded-full` block with `bg-current`, so **color** follows inherited foreground and `currentColor`. Scale sets how large the “breathing” motion feels relative to surrounding copy.
+
+### Size
+
+Chat UIs usually keep this tiny—`size-2` or `size-2.5` beside baseline text, larger in empty states or toolbars.
+
+<ComponentPreview name="pulse-dot-size" />
+
+### Color
+
+Because the dot is filled with `bg-current`, its hue follows the element’s **text color** / `currentColor`. The preview below uses `text-[#…]` on purpose so the swatches stay obvious; in real layouts you usually inherit from a parent or use whatever color API matches your theme.
+
+<ComponentPreview name="pulse-dot-color" />
+
+### Duration
+
+Breathing speed uses `--duration`, defaulting to **1.2s** in the component.
+
+<ComponentPreview name="pulse-dot-duration" />
+
+## Examples
+
+### Button
+
+Drop-in for “assistant is working” actions without changing button height.
+
+<ComponentPreview name="pulse-dot-button" />
+
+### Badge
+
+Thread and model-status chips stay compact because the dot carries the motion alone.
+
+<ComponentPreview name="pulse-dot-badge" />
+
+### Input group
+
+Mirrors the inline composer pattern: placeholder copy plus a dot at the trailing edge.
+
+<ComponentPreview name="pulse-dot-input-group" />
+
+### Tabs
+
+Use a tab panel to separate streaming copy from secondary material (sources, citations).
+
+<ComponentPreview name="pulse-dot-tabs" />

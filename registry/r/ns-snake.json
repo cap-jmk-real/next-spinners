@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-snake",
+  "title": "next-spinners — SnakeSpinner",
+  "description": "Braille/Unicode frame spinner: SnakeSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/snake.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⣁⡀\",\n  \"⣉⠀\",\n  \"⡉⠁\",\n  \"⠉⠉\",\n  \"⠈⠙\",\n  \"⠀⠛\",\n  \"⠐⠚\",\n  \"⠒⠒\",\n  \"⠖⠂\",\n  \"⠶⠀\",\n  \"⠦⠄\",\n  \"⠤⠤\",\n  \"⠠⢤\",\n  \"⠀⣤\",\n  \"⢀⣠\",\n  \"⣀⣀\",\n] as const;\n\nexport const SnakeSpinner = createAgentFrameSpinner(FRAMES, 80, \"SnakeSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

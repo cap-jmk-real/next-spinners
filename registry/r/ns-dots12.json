@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-dots12",
+  "title": "next-spinners — Dots12Spinner",
+  "description": "Braille/Unicode frame spinner: Dots12Spinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/dots12.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⢀⠀\",\n  \"⡀⠀\",\n  \"⠄⠀\",\n  \"⢂⠀\",\n  \"⡂⠀\",\n  \"⠅⠀\",\n  \"⢃⠀\",\n  \"⡃⠀\",\n  \"⠍⠀\",\n  \"⢋⠀\",\n  \"⡋⠀\",\n  \"⠍⠁\",\n  \"⢋⠁\",\n  \"⡋⠁\",\n  \"⠍⠉\",\n  \"⠋⠉\",\n  \"⠋⠉\",\n  \"⠉⠙\",\n  \"⠉⠙\",\n  \"⠉⠩\",\n  \"⠈⢙\",\n  \"⠈⡙\",\n  \"⢈⠩\",\n  \"⡀⢙\",\n  \"⠄⡙\",\n  \"⢂⠩\",\n  \"⡂⢘\",\n  \"⠅⡘\",\n  \"⢃⠨\",\n  \"⡃⢐\",\n  \"⠍⡐\",\n  \"⢋⠠\",\n  \"⡋⢀\",\n  \"⠍⡁\",\n  \"⢋⠁\",\n  \"⡋⠁\",\n  \"⠍⠉\",\n  \"⠋⠉\",\n  \"⠋⠉\",\n  \"⠉⠙\",\n  \"⠉⠙\",\n  \"⠉⠩\",\n  \"⠈⢙\",\n  \"⠈⡙\",\n  \"⠈⠩\",\n  \"⠀⢙\",\n  \"⠀⡙\",\n  \"⠀⠩\",\n  \"⠀⢘\",\n  \"⠀⡘\",\n  \"⠀⠨\",\n  \"⠀⢐\",\n  \"⠀⡐\",\n  \"⠀⠠\",\n  \"⠀⢀\",\n  \"⠀⡀\",\n] as const;\n\nexport const Dots12Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots12Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

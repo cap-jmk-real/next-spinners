@@ -1,0 +1,81 @@
+name: "Bug report"
+description: Report an issue
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for taking the time to create a bug report. Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
+
+  - type: markdown
+    attributes:
+      value: |
+        #### If you are asking for help or want to share an idea, please use the community links instead of opening a bug report.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of the bug. If you plan to open a PR, mention that here.
+      placeholder: Bug description
+    validations:
+      required: true
+
+  - type: input
+    id: affected-components
+    attributes:
+      label: Affected component/components
+      description: Which loading component, example, or page is affected?
+      placeholder: ex. ring, spokes, installer, docs preview
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce
+      description: A step-by-step description of how to reproduce the bug.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. See error
+    validations:
+      required: true
+
+  - type: input
+    id: reproduction-link
+    attributes:
+      label: Reproduction link
+      description: Link to a minimal reproduction in StackBlitz, CodeSandbox, or a public GitHub repository, if available.
+      placeholder: https://stackblitz.com/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error output
+      description: "Include browser console output, terminal logs, or stack traces. Prefer plain text over screenshots."
+      render: bash
+
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Information about your browser, OS, Bun/Node version, and anything else relevant.
+      render: bash
+      placeholder: OS, browser, Bun, Node, package manager
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      description: By submitting this issue, you agree to follow our [Contributing Guidelines](https://github.com/turbostarter/loading-ui/blob/main/.github/CONTRIBUTING.md).
+      options:
+        - label: I searched existing issues and pull requests
+          required: true
+        - label: I included enough detail for someone else to reproduce the problem
+          required: true

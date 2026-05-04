@@ -1,5 +1,6 @@
 ---
-outline: deep
+title: Guide
+outline: true
 ---
 
 # Guide

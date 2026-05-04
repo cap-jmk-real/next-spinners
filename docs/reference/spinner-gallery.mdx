@@ -1,0 +1,21 @@
+---
+title: Live spinner gallery
+outline: true
+---
+
+import { SpinnerCatalogClient } from "../components/spinner-catalog-client";
+
+# Live spinner gallery (by origin)
+
+Every named frame spinner from `next-spinners`, **grouped by where the sequence comes from** — same breakdown as the [Expo → export mapping](/reference/expo-mapping) page. Previews run **in the browser** (real React / MDX), not GIFs.
+
+<SpinnerCatalogClient />
+
+> The grid mounts after hydration so interval spinners do not run during static prerender.
+
+## Related
+
+- [Expo → export mapping](/reference/expo-mapping) — upstream demo keys and export names
+- [Guide](/guide) — props, theming, and App Router usage
+
+Loading UI and Dot Matrix sources are vendored separately; they are not part of this root export gallery. See `vendor/README.md` and the [Expo mapping note](/reference/expo-mapping#package-only-spinners-11).
