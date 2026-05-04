@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-dots11",
+  "title": "next-spinners — Dots11Spinner",
+  "description": "Braille/Unicode frame spinner: Dots11Spinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/dots11.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠁\", \"⠂\", \"⠄\", \"⡀\", \"⢀\", \"⠠\", \"⠐\", \"⠈\"] as const;\n\nexport const Dots11Spinner = createAgentFrameSpinner(FRAMES, 100, \"Dots11Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

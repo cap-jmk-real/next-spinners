@@ -1,14 +1,24 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts"],
+  entry: {
+    index: "src/index.ts",
+    "loading-ui": "src/loading-ui/index.ts",
+  },
   format: ["esm", "cjs"],
   dts: true,
   sourcemap: true,
   clean: true,
   splitting: false,
   treeshake: true,
-  external: ["react", "react-dom", "react/jsx-runtime"],
+  external: [
+    "react",
+    "react-dom",
+    "react/jsx-runtime",
+    "motion/react",
+    "clsx",
+    "tailwind-merge",
+  ],
   outExtension({ format }) {
     return { js: format === "cjs" ? ".cjs" : ".js" };
   },

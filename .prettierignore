@@ -1,9 +1,15 @@
+.cursor/
 dist/
 coverage/
+vendor/
 node_modules/
 docs/node_modules/
-docs/.vitepress/dist/
-docs/.vitepress/cache/
+docs/dist/
+docs/.rspress/
 docs/public/
 docs/media/
 docs/examples/
+examples/loading-ui-overview-app/.next/
+examples/loading-ui-overview-app/node_modules/
+examples/mixed-x-gif-app/.next/
+examples/mixed-x-gif-app/node_modules/

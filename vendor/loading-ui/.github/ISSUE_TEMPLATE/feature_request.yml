@@ -1,0 +1,61 @@
+name: "Feature request"
+description: Suggest an idea for this project
+title: "[feat]: "
+labels: ["request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for taking the time to create a feature request! Please search open/closed issues before submitting, as the issue may have already been reported/addressed.
+
+  - type: markdown
+    attributes:
+      value: |
+        #### For open-ended questions or implementation help, please use the community links instead of opening a feature request.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature description
+      description: Tell us about the component, variant, registry improvement, or UX improvement you want.
+      placeholder: "I need a loading component for ... because ..."
+    validations:
+      required: true
+
+  - type: input
+    id: affected-area
+    attributes:
+      label: Affected area
+      description: Which part of the project would this improve?
+      placeholder: ex. components, examples, registry, docs site, installer
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Problem or use case
+      description: Describe the user problem, workflow, or gap that this request would solve.
+      placeholder: Tell us why this would be useful.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add screenshots, references, examples, or prior art if they help explain the request.
+      placeholder: Links, screenshots, examples
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before submitting
+      description: By submitting this issue, you agree to follow our [Contributing Guidelines](https://github.com/turbostarter/loading-ui/blob/main/.github/CONTRIBUTING.md).
+      options:
+        - label: I searched existing issues and pull requests
+          required: true
+        - label: This request describes a concrete user or developer need
+          required: true

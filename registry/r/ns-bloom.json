@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-bloom",
+  "title": "next-spinners — BloomSpinner",
+  "description": "Braille/Unicode frame spinner: BloomSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/bloom.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠠\",\n  \"⠰\",\n  \"⠔\",\n  \"⠒\",\n  \"⠑\",\n  \"⠕\",\n  \"⠗\",\n  \"⠷\",\n  \"⠿\",\n  \"⠷\",\n  \"⠗\",\n  \"⠕\",\n  \"⠑\",\n  \"⠒\",\n  \"⠔\",\n  \"⠰\",\n  \"⠠\",\n  \"⠀\",\n] as const;\n\nexport const BloomSpinner = createAgentFrameSpinner(FRAMES, 100, \"BloomSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

@@ -1,6 +1,6 @@
 /**
  * Copies repo `media/` into the docs app so:
- * - `docs/media/` — VitePress can resolve `![](./media/...)` from `index.md` (README include).
+ * - `docs/media/` — Rspress can resolve `![](./media/...)` from `index.md` (README include).
  * - `docs/public/media/` — same files at site root for `/next-spinners/media/...` URLs.
  */
 import fs from "node:fs/promises";
@@ -29,7 +29,7 @@ async function copyRecursive(from, to) {
   }
 }
 
-/** README links to `./examples/*` from repo root; mirror here so VitePress resolves them from `docs/index.md`. */
+/** README links to `./examples/*` from repo root; mirror here so the docs site resolves them from `docs/index.md`. */
 const examplesSrc = path.join(root, "examples");
 
 await Promise.all([

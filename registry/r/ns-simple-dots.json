@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-simple-dots",
+  "title": "next-spinners — SimpleDotsSpinner",
+  "description": "Braille/Unicode frame spinner: SimpleDotsSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/simple-dots.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\".  \", \".. \", \"...\", \"   \"] as const;\n\nexport const SimpleDotsSpinner = createAgentFrameSpinner(\n  FRAMES,\n  400,\n  \"SimpleDotsSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

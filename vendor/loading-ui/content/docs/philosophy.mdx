@@ -1,0 +1,48 @@
+---
+title: Philosophy
+description: The design principles behind loading-ui and how we think about loading states in product interfaces.
+icon: Lightbulb
+---
+
+loading-ui is opinionated about one thing: a loading state should help the user understand what is happening, not just prove that animation is possible.
+
+## Motion should explain status
+
+A loader is useful when it answers a question quickly:
+
+- did my action start?
+- is this section still fetching?
+- should I wait, retry, or keep moving?
+
+The animation itself is secondary. The job is communication.
+
+## Loading states are part of the product
+
+Pending UI is not filler between real screens. It is part of the experience users actually see while saving, searching, uploading, and navigating. That means loading states should be designed with the same care as buttons, forms, and navigation.
+
+## Small surface area, high adaptability
+
+This project stays narrow on purpose. Instead of shipping a giant library of opinionated patterns, loading-ui focuses on a handful of primitives that are easy to install, inspect, and rewrite. The goal is to reduce repeated work without locking teams into a preset brand aesthetic.
+
+## Restraint over novelty
+
+A flashy animation can be useful in a landing page. In product UI, it often becomes noise. loading-ui favors components that:
+
+- read clearly at small sizes
+- look acceptable next to existing system UI
+- can be slowed down, simplified, or restyled with minimal effort
+- do not depend on decorative motion to make sense
+
+## Open code over black boxes
+
+Every installed component becomes part of your codebase. You can tune the animation curve, swap SVG paths, adjust accessibility text, or merge a loader into a bigger component. That ownership model is a core part of the project, not a side effect.
+
+## Documentation should stay practical
+
+The docs should help you evaluate and install components fast. That means straightforward setup steps, realistic examples, and language that reflects how teams actually ship UI.
+
+## Related
+
+- [Usage](/docs/usage) for setup and installation
+- [Components](/docs/components) for individual component pages
+- [Contributing](/docs/contributing) if you want to improve the registry

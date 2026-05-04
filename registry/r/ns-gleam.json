@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-gleam",
+  "title": "next-spinners — GleamSpinner",
+  "description": "Braille/Unicode frame spinner: GleamSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/gleam.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠁\",\n  \"⠉\",\n  \"⠋\",\n  \"⠛\",\n  \"⠟\",\n  \"⠿\",\n  \"⡿\",\n  \"⣿\",\n  \"⡿\",\n  \"⠿\",\n  \"⠟\",\n  \"⠛\",\n  \"⠋\",\n  \"⠉\",\n  \"⠁\",\n] as const;\n\nexport const GleamSpinner = createAgentFrameSpinner(FRAMES, 90, \"GleamSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

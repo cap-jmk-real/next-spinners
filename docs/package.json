@@ -4,12 +4,18 @@
   "type": "module",
   "scripts": {
     "sync": "node sync-public.mjs",
-    "prebuild": "npm run sync",
-    "build": "vitepress build",
-    "dev": "vitepress dev",
-    "preview": "vitepress preview"
+    "predev": "npm run sync",
+    "clean": "node clean-dist.mjs",
+    "prebuild": "npm run sync && npm run clean",
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview"
   },
   "devDependencies": {
-    "vitepress": "^1.6.4"
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "rspress": "^1.47.1"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-grow-horizontal",
+  "title": "next-spinners — GrowHorizontalSpinner",
+  "description": "Braille/Unicode frame spinner: GrowHorizontalSpinner",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "components/next-spinners/spinners/grow-horizontal.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"▏\", \"▎\", \"▍\", \"▌\", \"▋\", \"▊\", \"▉\", \"▊\", \"▋\", \"▌\", \"▍\", \"▎\"] as const;\n\nexport const GrowHorizontalSpinner = createAgentFrameSpinner(\n  FRAMES,\n  120,\n  \"GrowHorizontalSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+  ]
+}

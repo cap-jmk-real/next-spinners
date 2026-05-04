@@ -1,3 +1,8 @@
+---
+title: Maintainers
+outline: true
+---
+
 # Maintainers
 
 ## Regenerating spinners from expo-agent-spinners
@@ -31,6 +36,8 @@ npm run media:gif
 
 Requires a Chromium install (`npx playwright install chromium` or system Chrome/Edge). Tunables live in `scripts/capture-overview-gif.mjs` (viewport, frame interval, fps).
 
+- **Mixed-frame X showcase GIF** (four `createMixedFrameSpinner` demos): `npm run media:gif:mixed-x` after `cd examples/mixed-x-gif-app && npm install`. Output: `media/next-spinners-mixed-x-showcase.gif`. Tunables: `scripts/capture-mixed-x-showcase-gif.mjs` (`MIXED_X_GIF_*`, `MIXED_X_SHOWCASE_BASE_URL`).
+
 Prettier may flag regenerated `media/overview.html` / `media/spinner-frames-snapshot.json`; run the repo’s Prettier check/fix if CI complains.
 
 ## Documentation site
@@ -38,10 +45,10 @@ Prettier may flag regenerated `media/overview.html` / `media/spinner-frames-snap
 From the repo root:
 
 ```bash
-npm run docs:dev    # VitePress dev server
-npm run docs:build  # production build → docs/.vitepress/dist
+npm run docs:dev    # Rspress dev server (React + MDX)
+npm run docs:build  # production build → docs/dist
 ```
 
 `docs/sync-public.mjs` runs before build and copies `media/` and `examples/` into the docs app so images and example links resolve.
 
-GitHub Pages base path is configured in `docs/.vitepress/config.mts` (`base: "/next-spinners/"`).
+GitHub Pages base path is configured in `docs/rspress.config.ts` (`base: "/next-spinners/"`).

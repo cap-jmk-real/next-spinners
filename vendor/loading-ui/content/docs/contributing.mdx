@@ -1,0 +1,65 @@
+---
+title: Contributing
+description: How to improve loading-ui, from documentation tweaks to new registry components.
+icon: GitPullRequest
+---
+
+loading-ui is intentionally small, which makes contribution scope easier to reason about. Good contributions usually improve one of three things:
+
+- the quality of an existing component
+- the clarity of the docs
+- the consistency of the registry and examples
+
+## Before opening a pull request
+
+- Check for an existing issue or open PR covering the same problem.
+- For larger additions, align on direction first instead of building in isolation.
+- Keep proposals narrow. Small, reviewable changes move faster here than broad rewrites.
+
+## Local development
+
+Install dependencies and run the site locally:
+
+```bash
+bun install
+bun run dev
+```
+
+If you change registry items, rebuild the generated registry artifacts:
+
+```bash
+bun run build:registry
+```
+
+## What to update
+
+Changes should stay coherent across the repo:
+
+- component updates should include docs where public behavior changes
+- docs examples should reflect real install and usage paths
+- generated registry output should be rebuilt when source registry items change
+
+## Component contributions
+
+The bar for a new loading component is higher than "looks nice in isolation". It should also be:
+
+- easy to understand at a glance
+- reusable across real product states
+- straightforward to customize after installation
+- compatible with the existing registry structure
+
+If a component is highly specific, it may belong in an app codebase or example gallery instead of the main registry.
+
+## Documentation contributions
+
+Docs live in `content/docs`. Prioritize clear setup steps, honest tradeoffs, and examples that match the actual repository structure. If the docs imply a workflow the repo does not support, fix the docs or the workflow so they agree.
+
+## Pull request notes
+
+When you open a PR, explain:
+
+- what problem it solves
+- why this approach fits the project
+- whether docs or generated files were updated
+
+That context matters more than a long edit summary.

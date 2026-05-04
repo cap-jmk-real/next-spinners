@@ -4,6 +4,7 @@
  * - Inlines the same JSON into `media/overview.html` inside
  *   `<script type="application/json" id="spinner-snapshot">`.
  */
+import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -57,22 +58,32 @@ entries.sort((a, b) => a.name.localeCompare(b.name));
 const jsonText = `${JSON.stringify(entries, null, 2)}\n`;
 writeFileSync(outJson, jsonText, "utf8");
 
-let overview = readFileSync(overviewPath, "utf8");
-/** Prettier may reorder attributes; match by id only. */
-const snapshotScriptRe =
-  /(<script\s[^>]*\bid\s*=\s*["']spinner-snapshot["'][^>]*>)[\s\S]*?(<\/script>)/i;
+function replaceSpinnerSnapshot(htmlPath, label) {
+  let overview = readFileSync(htmlPath, "utf8");
+  /** Prettier may reorder attributes; match by id only. */
+  const snapshotScriptRe =
+    /(<script\s[^>]*\bid\s*=\s*["']spinner-snapshot["'][^>]*>)[\s\S]*?(<\/script>)/i;
 
-if (!snapshotScriptRe.test(overview)) {
-  throw new Error(`Could not find <script id="spinner-snapshot" ...> in overview.html`);
+  if (!snapshotScriptRe.test(overview)) {
+    throw new Error(`Could not find <script id="spinner-snapshot" ...> in ${label}`);
+  }
+
+  const snapshotJson = JSON.stringify(entries, null, 2);
+  const replaced = overview.replace(
+    snapshotScriptRe,
+    (_m, open, close) => `${open}\n${snapshotJson}\n${close}`,
+  );
+
+  writeFileSync(htmlPath, replaced, "utf8");
 }
 
-const snapshotJson = JSON.stringify(entries, null, 2);
-const replaced = overview.replace(
-  snapshotScriptRe,
-  (_m, open, close) => `${open}\n${snapshotJson}\n${close}`,
-);
+replaceSpinnerSnapshot(overviewPath, "overview.html");
 
-writeFileSync(overviewPath, replaced, "utf8");
+execFileSync("npx", ["prettier", "--write", outJson, overviewPath], {
+  stdio: "inherit",
+  cwd: root,
+  shell: true,
+});
 
 console.log(
   `Wrote ${entries.length} spinners to ${outJson} and inlined into overview.html`,

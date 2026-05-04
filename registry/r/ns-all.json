@@ -1,0 +1,424 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ns-all",
+  "title": "next-spinners — all frame spinners",
+  "description": "Full library: createAgentFrameSpinner + every exported spinner + barrel index.",
+  "type": "registry:ui",
+  "dependencies": ["react", "react-dom"],
+  "files": [
+    {
+      "path": "lib/next-spinners/agent-frame-spinner.tsx",
+      "content": "\"use client\";\n\nimport {\n  useEffect,\n  useMemo,\n  useState,\n  type ComponentType,\n  type CSSProperties,\n  type HTMLAttributes,\n} from \"react\";\n\nexport type AgentFrameSpinnerProps = Omit<\n  HTMLAttributes<HTMLSpanElement>,\n  \"color\" | \"style\" | \"children\"\n> & {\n  /** Pixel font size (expo-agent-spinners default: 24). */\n  size?: number;\n  /**\n   * Foreground color (maps to CSS `color`). Merged before `style`, so a color in\n   * `style` wins — use `color=\"currentColor\"` to inherit the parent text color,\n   * or `style={{ color: \"var(--your-token)\" }}` for design tokens.\n   * Ignored when `effect=\"dotmatrix\"` (gradient fill is used instead).\n   */\n  color?: string;\n  style?: CSSProperties;\n  /**\n   * Neon gradient text + glow inspired by [Dot Matrix](https://dotmatrix.zzzzshawn.cloud/).\n   * Injects a one-time `@keyframes` stylesheet when first used.\n   */\n  effect?: \"none\" | \"dotmatrix\";\n  /**\n   * Accessible name for the status region.\n   * @defaultValue \"Loading\"\n   */\n  label?: string;\n  /** Milliseconds between frames; overrides factory default and wins over `durationMs`. */\n  intervalMs?: number;\n  /**\n   * Milliseconds for one full loop (`interval ≈ durationMs / frame count`, rounded).\n   * Ignored when `intervalMs` is set.\n   */\n  durationMs?: number;\n};\n\n/**\n * Braille / ASCII frame spinner for web. Matches expo-agent-spinners timing and glyphs.\n * Must be used from a Client Component tree (uses interval + state).\n */\nexport function createAgentFrameSpinner(\n  frames: readonly string[],\n  baseIntervalMs: number,\n  displayName: string,\n): ComponentType<AgentFrameSpinnerProps> {\n  function FrameSpinner({\n    size = 24,\n    color = \"#fff\",\n    style,\n    effect = \"none\",\n    label = \"Loading\",\n    className = \"\",\n    role = \"status\",\n    intervalMs: intervalMsProp,\n    durationMs,\n    ...rest\n  }: AgentFrameSpinnerProps) {\n    const [frame, setFrame] = useState(0);\n\n    const tickMs = useMemo(() => {\n      if (intervalMsProp != null && Number.isFinite(intervalMsProp)) {\n        return Math.max(1, Math.round(intervalMsProp));\n      }\n      if (\n        durationMs != null &&\n        Number.isFinite(durationMs) &&\n        durationMs > 0 &&\n        frames.length > 0\n      ) {\n        return Math.max(1, Math.round(durationMs / frames.length));\n      }\n      return baseIntervalMs;\n    }, [intervalMsProp, durationMs, baseIntervalMs, frames.length]);\n\n    useEffect(() => {\n      const id = setInterval(() => {\n        setFrame((i) => (i + 1) % frames.length);\n      }, tickMs);\n      return () => clearInterval(id);\n    }, [frames.length, tickMs]);\n\n    useEffect(() => {\n      if (effect !== \"dotmatrix\") return;\n      const id = \"next-spinners-dotmatrix-kf\";\n      if (document.getElementById(id)) return;\n      const el = document.createElement(\"style\");\n      el.id = id;\n      el.textContent = `\n@keyframes next-spinners-dm-gradient {\n  0% { background-position: 0% 50%; }\n  100% { background-position: 100% 50%; }\n}\n`;\n      document.head.appendChild(el);\n    }, [effect]);\n\n    const dotmatrix: CSSProperties =\n      effect === \"dotmatrix\"\n        ? {\n            backgroundImage:\n              \"linear-gradient(92deg, #22d3ee, #a78bfa, #f472b6, #4ade80, #22d3ee)\",\n            backgroundSize: \"240% 100%\",\n            backgroundPosition: \"0% 50%\",\n            WebkitBackgroundClip: \"text\",\n            backgroundClip: \"text\",\n            color: \"transparent\",\n            WebkitTextFillColor: \"transparent\",\n            filter: \"drop-shadow(0 0 6px rgba(34, 211, 238, 0.45))\",\n            animation: \"next-spinners-dm-gradient 2.6s linear infinite\",\n          }\n        : {};\n\n    const merged: CSSProperties = {\n      fontSize: size,\n      color,\n      textAlign: \"center\",\n      lineHeight: size * 1.3,\n      display: \"inline-flex\",\n      alignItems: \"center\",\n      justifyContent: \"center\",\n      /* Braille (U+2800…) and mixed Unicode often lack glyphs in pure monospace — symbols first. */\n      fontFamily:\n        '\"Noto Sans Symbols 2\", \"Segoe UI Symbol\", \"Segoe UI Emoji\", ui-monospace, SFMono-Regular, \"Cascadia Code\", monospace',\n      ...dotmatrix,\n      ...style,\n    };\n\n    return (\n      <span\n        className={className}\n        style={merged}\n        role={role}\n        aria-live=\"polite\"\n        aria-label={label}\n        {...rest}\n      >\n        {frames[frame]}\n      </span>\n    );\n  }\n\n  FrameSpinner.displayName = displayName;\n  return FrameSpinner;\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/arc.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◜\", \"◠\", \"◝\", \"◞\", \"◡\", \"◟\"] as const;\n\nexport const ArcSpinner = createAgentFrameSpinner(FRAMES, 100, \"ArcSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/arrow.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"←\", \"↖\", \"↑\", \"↗\", \"→\", \"↘\", \"↓\", \"↙\"] as const;\n\nexport const ArrowSpinner = createAgentFrameSpinner(FRAMES, 100, \"ArrowSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/aurora.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁⠂⠄\",\n  \"⠂⠄⡀\",\n  \"⠄⡀⢀\",\n  \"⡀⢀⠠\",\n  \"⢀⠠⠐\",\n  \"⠠⠐⠈\",\n  \"⠐⠈⠁\",\n  \"⠈⠁⠂\",\n  \"⠁⠂⠄\",\n  \"⠂⠄⡀\",\n  \"⠄⡀⢀\",\n  \"⡀⢀⠠\",\n] as const;\n\nexport const AuroraSpinner = createAgentFrameSpinner(FRAMES, 95, \"AuroraSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/balloon.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\".\", \"o\", \"O\", \"o\", \".\"] as const;\n\nexport const BalloonSpinner = createAgentFrameSpinner(FRAMES, 120, \"BalloonSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/bloom.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠠\",\n  \"⠰\",\n  \"⠔\",\n  \"⠒\",\n  \"⠑\",\n  \"⠕\",\n  \"⠗\",\n  \"⠷\",\n  \"⠿\",\n  \"⠷\",\n  \"⠗\",\n  \"⠕\",\n  \"⠑\",\n  \"⠒\",\n  \"⠔\",\n  \"⠰\",\n  \"⠠\",\n  \"⠀\",\n] as const;\n\nexport const BloomSpinner = createAgentFrameSpinner(FRAMES, 100, \"BloomSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/bounce.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠁\", \"⠂\", \"⠄\", \"⡀\", \"⠄\", \"⠂\"] as const;\n\nexport const BounceSpinner = createAgentFrameSpinner(FRAMES, 120, \"BounceSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/breathe.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠂\",\n  \"⠌\",\n  \"⡑\",\n  \"⢕\",\n  \"⢝\",\n  \"⣫\",\n  \"⣟\",\n  \"⣿\",\n  \"⣟\",\n  \"⣫\",\n  \"⢝\",\n  \"⢕\",\n  \"⡑\",\n  \"⠌\",\n  \"⠂\",\n  \"⠀\",\n] as const;\n\nexport const BreatheSpinner = createAgentFrameSpinner(FRAMES, 100, \"BreatheSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/cascade.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀⠀⠀⠀\",\n  \"⠀⠀⠀⠀\",\n  \"⠁⠀⠀⠀\",\n  \"⠋⠀⠀⠀\",\n  \"⠞⠁⠀⠀\",\n  \"⡴⠋⠀⠀\",\n  \"⣠⠞⠁⠀\",\n  \"⢀⡴⠋⠀\",\n  \"⠀⣠⠞⠁\",\n  \"⠀⢀⡴⠋\",\n  \"⠀⠀⣠⠞\",\n  \"⠀⠀⢀⡴\",\n  \"⠀⠀⠀⣠\",\n  \"⠀⠀⠀⢀\",\n] as const;\n\nexport const CascadeSpinner = createAgentFrameSpinner(FRAMES, 60, \"CascadeSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/checkerboard.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⢕⢕⢕\", \"⡪⡪⡪\", \"⢊⠔⡡\", \"⡡⢊⠔\"] as const;\n\nexport const CheckerboardSpinner = createAgentFrameSpinner(\n  FRAMES,\n  250,\n  \"CheckerboardSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/circle-halves.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◐\", \"◓\", \"◑\", \"◒\"] as const;\n\nexport const CircleHalvesSpinner = createAgentFrameSpinner(\n  FRAMES,\n  50,\n  \"CircleHalvesSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/circle-quarters.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◴\", \"◷\", \"◶\", \"◵\"] as const;\n\nexport const CircleQuartersSpinner = createAgentFrameSpinner(\n  FRAMES,\n  120,\n  \"CircleQuartersSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/clock.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"🕛\",\n  \"🕐\",\n  \"🕑\",\n  \"🕒\",\n  \"🕓\",\n  \"🕔\",\n  \"🕕\",\n  \"🕖\",\n  \"🕗\",\n  \"🕘\",\n  \"🕙\",\n  \"🕚\",\n] as const;\n\nexport const ClockSpinner = createAgentFrameSpinner(FRAMES, 100, \"ClockSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/columns.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⡀⠀⠀\",\n  \"⡄⠀⠀\",\n  \"⡆⠀⠀\",\n  \"⡇⠀⠀\",\n  \"⣇⠀⠀\",\n  \"⣧⠀⠀\",\n  \"⣷⠀⠀\",\n  \"⣿⠀⠀\",\n  \"⣿⡀⠀\",\n  \"⣿⡄⠀\",\n  \"⣿⡆⠀\",\n  \"⣿⡇⠀\",\n  \"⣿⣇⠀\",\n  \"⣿⣧⠀\",\n  \"⣿⣷⠀\",\n  \"⣿⣿⠀\",\n  \"⣿⣿⡀\",\n  \"⣿⣿⡄\",\n  \"⣿⣿⡆\",\n  \"⣿⣿⡇\",\n  \"⣿⣿⣇\",\n  \"⣿⣿⣧\",\n  \"⣿⣿⣷\",\n  \"⣿⣿⣿\",\n  \"⣿⣿⣿\",\n  \"⠀⠀⠀\",\n] as const;\n\nexport const ColumnsSpinner = createAgentFrameSpinner(FRAMES, 60, \"ColumnsSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/diagswipe.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁⠀\",\n  \"⠋⠀\",\n  \"⠟⠁\",\n  \"⡿⠋\",\n  \"⣿⠟\",\n  \"⣿⡿\",\n  \"⣿⣿\",\n  \"⣿⣿\",\n  \"⣾⣿\",\n  \"⣴⣿\",\n  \"⣠⣾\",\n  \"⢀⣴\",\n  \"⠀⣠\",\n  \"⠀⢀\",\n  \"⠀⠀\",\n  \"⠀⠀\",\n] as const;\n\nexport const DiagSwipeSpinner = createAgentFrameSpinner(FRAMES, 60, \"DiagSwipeSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots10.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⢄\", \"⢂\", \"⢁\", \"⡁\", \"⡈\", \"⡐\", \"⡠\"] as const;\n\nexport const Dots10Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots10Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots11.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠁\", \"⠂\", \"⠄\", \"⡀\", \"⢀\", \"⠠\", \"⠐\", \"⠈\"] as const;\n\nexport const Dots11Spinner = createAgentFrameSpinner(FRAMES, 100, \"Dots11Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots12.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⢀⠀\",\n  \"⡀⠀\",\n  \"⠄⠀\",\n  \"⢂⠀\",\n  \"⡂⠀\",\n  \"⠅⠀\",\n  \"⢃⠀\",\n  \"⡃⠀\",\n  \"⠍⠀\",\n  \"⢋⠀\",\n  \"⡋⠀\",\n  \"⠍⠁\",\n  \"⢋⠁\",\n  \"⡋⠁\",\n  \"⠍⠉\",\n  \"⠋⠉\",\n  \"⠋⠉\",\n  \"⠉⠙\",\n  \"⠉⠙\",\n  \"⠉⠩\",\n  \"⠈⢙\",\n  \"⠈⡙\",\n  \"⢈⠩\",\n  \"⡀⢙\",\n  \"⠄⡙\",\n  \"⢂⠩\",\n  \"⡂⢘\",\n  \"⠅⡘\",\n  \"⢃⠨\",\n  \"⡃⢐\",\n  \"⠍⡐\",\n  \"⢋⠠\",\n  \"⡋⢀\",\n  \"⠍⡁\",\n  \"⢋⠁\",\n  \"⡋⠁\",\n  \"⠍⠉\",\n  \"⠋⠉\",\n  \"⠋⠉\",\n  \"⠉⠙\",\n  \"⠉⠙\",\n  \"⠉⠩\",\n  \"⠈⢙\",\n  \"⠈⡙\",\n  \"⠈⠩\",\n  \"⠀⢙\",\n  \"⠀⡙\",\n  \"⠀⠩\",\n  \"⠀⢘\",\n  \"⠀⡘\",\n  \"⠀⠨\",\n  \"⠀⢐\",\n  \"⠀⡐\",\n  \"⠀⠠\",\n  \"⠀⢀\",\n  \"⠀⡀\",\n] as const;\n\nexport const Dots12Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots12Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots13.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⣼\", \"⣹\", \"⢻\", \"⠿\", \"⡟\", \"⣏\", \"⣧\", \"⣶\"] as const;\n\nexport const Dots13Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots13Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots14.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠉⠉\",\n  \"⠈⠙\",\n  \"⠀⠹\",\n  \"⠀⢸\",\n  \"⠀⣰\",\n  \"⢀⣠\",\n  \"⣀⣀\",\n  \"⣄⡀\",\n  \"⣆⠀\",\n  \"⡇⠀\",\n  \"⠏⠀\",\n  \"⠋⠁\",\n] as const;\n\nexport const Dots14Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots14Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots2.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⣾\", \"⣽\", \"⣻\", \"⢿\", \"⡿\", \"⣟\", \"⣯\", \"⣷\"] as const;\n\nexport const Dots2Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots2Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots3.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠋\", \"⠙\", \"⠚\", \"⠞\", \"⠖\", \"⠦\", \"⠴\", \"⠲\", \"⠳\", \"⠓\"] as const;\n\nexport const Dots3Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots3Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots4.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠄\",\n  \"⠆\",\n  \"⠇\",\n  \"⠋\",\n  \"⠙\",\n  \"⠸\",\n  \"⠰\",\n  \"⠠\",\n  \"⠰\",\n  \"⠸\",\n  \"⠙\",\n  \"⠋\",\n  \"⠇\",\n  \"⠆\",\n] as const;\n\nexport const Dots4Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots4Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots5.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠋\",\n  \"⠙\",\n  \"⠚\",\n  \"⠒\",\n  \"⠂\",\n  \"⠂\",\n  \"⠒\",\n  \"⠲\",\n  \"⠴\",\n  \"⠦\",\n  \"⠖\",\n  \"⠒\",\n  \"⠐\",\n  \"⠐\",\n  \"⠒\",\n  \"⠓\",\n  \"⠋\",\n] as const;\n\nexport const Dots5Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots5Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots6.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁\",\n  \"⠉\",\n  \"⠙\",\n  \"⠚\",\n  \"⠒\",\n  \"⠂\",\n  \"⠂\",\n  \"⠒\",\n  \"⠲\",\n  \"⠴\",\n  \"⠤\",\n  \"⠄\",\n  \"⠄\",\n  \"⠤\",\n  \"⠴\",\n  \"⠲\",\n  \"⠒\",\n  \"⠂\",\n  \"⠂\",\n  \"⠒\",\n  \"⠚\",\n  \"⠙\",\n  \"⠉\",\n  \"⠁\",\n] as const;\n\nexport const Dots6Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots6Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots7.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠈\",\n  \"⠉\",\n  \"⠋\",\n  \"⠓\",\n  \"⠒\",\n  \"⠐\",\n  \"⠐\",\n  \"⠒\",\n  \"⠖\",\n  \"⠦\",\n  \"⠤\",\n  \"⠠\",\n  \"⠠\",\n  \"⠤\",\n  \"⠦\",\n  \"⠖\",\n  \"⠒\",\n  \"⠐\",\n  \"⠐\",\n  \"⠒\",\n  \"⠓\",\n  \"⠋\",\n  \"⠉\",\n  \"⠈\",\n] as const;\n\nexport const Dots7Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots7Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots8.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁\",\n  \"⠁\",\n  \"⠉\",\n  \"⠙\",\n  \"⠚\",\n  \"⠒\",\n  \"⠂\",\n  \"⠂\",\n  \"⠒\",\n  \"⠲\",\n  \"⠴\",\n  \"⠤\",\n  \"⠄\",\n  \"⠄\",\n  \"⠤\",\n  \"⠠\",\n  \"⠠\",\n  \"⠤\",\n  \"⠦\",\n  \"⠖\",\n  \"⠒\",\n  \"⠐\",\n  \"⠐\",\n  \"⠒\",\n  \"⠓\",\n  \"⠋\",\n  \"⠉\",\n  \"⠈\",\n  \"⠈\",\n] as const;\n\nexport const Dots8Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots8Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots9.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⢹\", \"⢺\", \"⢼\", \"⣸\", \"⣇\", \"⡧\", \"⡗\", \"⡏\"] as const;\n\nexport const Dots9Spinner = createAgentFrameSpinner(FRAMES, 80, \"Dots9Spinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots-circle.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⢎⠀\", \"⠎⠁\", \"⠊⠑\", \"⠈⠱\", \"⠀⡱\", \"⢀⡰\", \"⢄⡠\", \"⢆⡀\"] as const;\n\nexport const DotsCircleSpinner = createAgentFrameSpinner(FRAMES, 80, \"DotsCircleSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dots.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠋\", \"⠙\", \"⠹\", \"⠸\", \"⠼\", \"⠴\", \"⠦\", \"⠧\", \"⠇\", \"⠏\"] as const;\n\nexport const DotsSpinner = createAgentFrameSpinner(FRAMES, 80, \"DotsSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/double-arrow.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⇐\", \"⇖\", \"⇑\", \"⇗\", \"⇒\", \"⇘\", \"⇓\", \"⇙\"] as const;\n\nexport const DoubleArrowSpinner = createAgentFrameSpinner(\n  FRAMES,\n  100,\n  \"DoubleArrowSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/dqpb.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"d\", \"q\", \"p\", \"b\"] as const;\n\nexport const DqpbSpinner = createAgentFrameSpinner(FRAMES, 100, \"DqpbSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/earth.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"🌍\", \"🌎\", \"🌏\"] as const;\n\nexport const EarthSpinner = createAgentFrameSpinner(FRAMES, 180, \"EarthSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/echo.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠉\",\n  \"⠑\",\n  \"⠘\",\n  \"⠔\",\n  \"⠒\",\n  \"⠂\",\n  \"⠄\",\n  \"⡀\",\n  \"⢀\",\n  \"⠠\",\n  \"⠐\",\n  \"⠈\",\n  \"⠃\",\n  \"⠊\",\n  \"⠙\",\n  \"⠚\",\n  \"⠒\",\n  \"⠔\",\n  \"⠘\",\n  \"⠑\",\n] as const;\n\nexport const EchoSpinner = createAgentFrameSpinner(FRAMES, 85, \"EchoSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/fillsweep.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⣀⣀\",\n  \"⣤⣤\",\n  \"⣶⣶\",\n  \"⣿⣿\",\n  \"⣿⣿\",\n  \"⣿⣿\",\n  \"⣶⣶\",\n  \"⣤⣤\",\n  \"⣀⣀\",\n  \"⠀⠀\",\n  \"⠀⠀\",\n] as const;\n\nexport const FillSweepSpinner = createAgentFrameSpinner(FRAMES, 100, \"FillSweepSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/flow.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⡇\", \"⣇\", \"⣧\", \"⣷\", \"⣿\", \"⢿\", \"⡿\", \"⣟\", \"⣯\", \"⣷\", \"⣧\", \"⣇\"] as const;\n\nexport const FlowSpinner = createAgentFrameSpinner(FRAMES, 90, \"FlowSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/gleam.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠁\",\n  \"⠉\",\n  \"⠋\",\n  \"⠛\",\n  \"⠟\",\n  \"⠿\",\n  \"⡿\",\n  \"⣿\",\n  \"⡿\",\n  \"⠿\",\n  \"⠟\",\n  \"⠛\",\n  \"⠋\",\n  \"⠉\",\n  \"⠁\",\n] as const;\n\nexport const GleamSpinner = createAgentFrameSpinner(FRAMES, 90, \"GleamSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/grow-horizontal.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"▏\", \"▎\", \"▍\", \"▌\", \"▋\", \"▊\", \"▉\", \"▊\", \"▋\", \"▌\", \"▍\", \"▎\"] as const;\n\nexport const GrowHorizontalSpinner = createAgentFrameSpinner(\n  FRAMES,\n  120,\n  \"GrowHorizontalSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/grow-vertical.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"▁\", \"▃\", \"▄\", \"▅\", \"▆\", \"▇\", \"▆\", \"▅\", \"▄\", \"▃\"] as const;\n\nexport const GrowVerticalSpinner = createAgentFrameSpinner(\n  FRAMES,\n  120,\n  \"GrowVerticalSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/halo.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠎\",\n  \"⠜\",\n  \"⠖\",\n  \"⠦\",\n  \"⠴\",\n  \"⠲\",\n  \"⠐\",\n  \"⠈\",\n  \"⠁\",\n  \"⠂\",\n  \"⠄\",\n  \"⡀\",\n  \"⢀\",\n  \"⠠\",\n  \"⠐\",\n  \"⠒\",\n] as const;\n\nexport const HaloSpinner = createAgentFrameSpinner(FRAMES, 95, \"HaloSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/hearts.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"🩷\",\n  \"🧡\",\n  \"💛\",\n  \"💚\",\n  \"💙\",\n  \"🩵\",\n  \"💜\",\n  \"🤎\",\n  \"🖤\",\n  \"🩶\",\n  \"🤍\",\n] as const;\n\nexport const HeartsSpinner = createAgentFrameSpinner(FRAMES, 120, \"HeartsSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/helix.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⢌⣉⢎⣉\",\n  \"⣉⡱⣉⡱\",\n  \"⣉⢎⣉⢎\",\n  \"⡱⣉⡱⣉\",\n  \"⢎⣉⢎⣉\",\n  \"⣉⡱⣉⡱\",\n  \"⣉⢎⣉⢎\",\n  \"⡱⣉⡱⣉\",\n  \"⢎⣉⢎⣉\",\n  \"⣉⡱⣉⡱\",\n  \"⣉⢎⣉⢎\",\n  \"⡱⣉⡱⣉\",\n  \"⢎⣉⢎⣉\",\n  \"⣉⡱⣉⡱\",\n  \"⣉⢎⣉⢎\",\n  \"⡱⣉⡱⣉\",\n] as const;\n\nexport const HelixSpinner = createAgentFrameSpinner(FRAMES, 80, \"HelixSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/moon.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"🌑\", \"🌒\", \"🌓\", \"🌔\", \"🌕\", \"🌖\", \"🌗\", \"🌘\"] as const;\n\nexport const MoonSpinner = createAgentFrameSpinner(FRAMES, 80, \"MoonSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/noise.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"▓\", \"▒\", \"░\", \" \", \"░\", \"▒\"] as const;\n\nexport const NoiseSpinner = createAgentFrameSpinner(FRAMES, 100, \"NoiseSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/nova.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀\",\n  \"⠄\",\n  \"⠆\",\n  \"⠖\",\n  \"⠶\",\n  \"⠷\",\n  \"⠿\",\n  \"⡿\",\n  \"⣿\",\n  \"⡿\",\n  \"⠿\",\n  \"⠷\",\n  \"⠶\",\n  \"⠖\",\n  \"⠆\",\n  \"⠄\",\n] as const;\n\nexport const NovaSpinner = createAgentFrameSpinner(FRAMES, 85, \"NovaSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/orbit.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠃\", \"⠉\", \"⠘\", \"⠰\", \"⢠\", \"⣀\", \"⡄\", \"⠆\"] as const;\n\nexport const OrbitSpinner = createAgentFrameSpinner(FRAMES, 100, \"OrbitSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/point.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"···\", \"•··\", \"·•·\", \"··•\", \"···\"] as const;\n\nexport const PointSpinner = createAgentFrameSpinner(FRAMES, 200, \"PointSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/prism.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⢠⡄\", \"⣰⡆\", \"⣴⡇\", \"⣶⡇\", \"⣷⡿\", \"⣿⣿\", \"⣷⡿\", \"⣶⡇\", \"⣴⡇\", \"⣰⡆\"] as const;\n\nexport const PrismSpinner = createAgentFrameSpinner(FRAMES, 100, \"PrismSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/pulse.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠀⠶⠀\", \"⠰⣿⠆\", \"⢾⣉⡷\", \"⣏⠀⣹\", \"⡁⠀⢈\"] as const;\n\nexport const PulseSpinner = createAgentFrameSpinner(FRAMES, 180, \"PulseSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/rain.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⢁⠂⠔⠈\",\n  \"⠂⠌⡠⠐\",\n  \"⠄⡐⢀⠡\",\n  \"⡈⠠⠀⢂\",\n  \"⠐⢀⠁⠄\",\n  \"⠠⠁⠊⡀\",\n  \"⢁⠂⠔⠈\",\n  \"⠂⠌⡠⠐\",\n  \"⠄⡐⢀⠡\",\n  \"⡈⠠⠀⢂\",\n  \"⠐⢀⠁⠄\",\n  \"⠠⠁⠊⡀\",\n] as const;\n\nexport const RainSpinner = createAgentFrameSpinner(FRAMES, 100, \"RainSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/random.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠿\",\n  \"⠛\",\n  \"⠟\",\n  \"⠯\",\n  \"⠷\",\n  \"⠾\",\n  \"⡿\",\n  \"⢿\",\n  \"⠄\",\n  \"⠆\",\n  \"⠠\",\n  \"⠡\",\n  \"⠑\",\n  \"⠘\",\n  \"⠸\",\n  \"⠼\",\n  \"⣀\",\n  \"⣤\",\n  \"⣶\",\n  \"⣿\",\n  \"⢿\",\n  \"⠿\",\n  \"⠻\",\n  \"⠽\",\n] as const;\n\nexport const RandomSpinner = createAgentFrameSpinner(FRAMES, 75, \"RandomSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/ripple.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁\",\n  \"⠔\",\n  \"⠒\",\n  \"⠑\",\n  \"⠊\",\n  \"⠉\",\n  \"⠃\",\n  \"⠇\",\n  \"⠏\",\n  \"⠟\",\n  \"⠻\",\n  \"⠽\",\n  \"⠾\",\n  \"⠷\",\n  \"⠶\",\n  \"⠦\",\n  \"⠎\",\n  \"⠒\",\n] as const;\n\nexport const RippleSpinner = createAgentFrameSpinner(FRAMES, 95, \"RippleSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/rolling-line.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"/\", \"-\", \"\\\\\", \"|\", \"\\\\\", \"-\"] as const;\n\nexport const RollingLineSpinner = createAgentFrameSpinner(\n  FRAMES,\n  80,\n  \"RollingLineSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/sand.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠁\",\n  \"⠂\",\n  \"⠄\",\n  \"⡀\",\n  \"⡈\",\n  \"⡐\",\n  \"⡠\",\n  \"⣀\",\n  \"⣁\",\n  \"⣂\",\n  \"⣄\",\n  \"⣌\",\n  \"⣔\",\n  \"⣤\",\n  \"⣥\",\n  \"⣦\",\n  \"⣮\",\n  \"⣶\",\n  \"⣷\",\n  \"⣿\",\n  \"⡿\",\n  \"⠿\",\n  \"⢟\",\n  \"⠟\",\n  \"⡛\",\n  \"⠛\",\n  \"⠫\",\n  \"⢋\",\n  \"⠋\",\n  \"⠍\",\n  \"⡉\",\n  \"⠉\",\n  \"⠑\",\n  \"⠡\",\n  \"⢁\",\n] as const;\n\nexport const SandSpinner = createAgentFrameSpinner(FRAMES, 80, \"SandSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/scan.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠀⠀⠀⠀\",\n  \"⡇⠀⠀⠀\",\n  \"⣿⠀⠀⠀\",\n  \"⢸⡇⠀⠀\",\n  \"⠀⣿⠀⠀\",\n  \"⠀⢸⡇⠀\",\n  \"⠀⠀⣿⠀\",\n  \"⠀⠀⢸⡇\",\n  \"⠀⠀⠀⣿\",\n  \"⠀⠀⠀⢸\",\n] as const;\n\nexport const ScanSpinner = createAgentFrameSpinner(FRAMES, 70, \"ScanSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/simple-dots-scrolling.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\".  \", \".. \", \"...\", \" ..\", \"  .\", \"   \"] as const;\n\nexport const SimpleDotsScrollingSpinner = createAgentFrameSpinner(\n  FRAMES,\n  200,\n  \"SimpleDotsScrollingSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/simple-dots.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\".  \", \".. \", \"...\", \"   \"] as const;\n\nexport const SimpleDotsSpinner = createAgentFrameSpinner(\n  FRAMES,\n  400,\n  \"SimpleDotsSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/snake.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⣁⡀\",\n  \"⣉⠀\",\n  \"⡉⠁\",\n  \"⠉⠉\",\n  \"⠈⠙\",\n  \"⠀⠛\",\n  \"⠐⠚\",\n  \"⠒⠒\",\n  \"⠖⠂\",\n  \"⠶⠀\",\n  \"⠦⠄\",\n  \"⠤⠤\",\n  \"⠠⢤\",\n  \"⠀⣤\",\n  \"⢀⣠\",\n  \"⣀⣀\",\n] as const;\n\nexport const SnakeSpinner = createAgentFrameSpinner(FRAMES, 80, \"SnakeSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/sparkle.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⡡⠊⢔⠡\", \"⠊⡰⡡⡘\", \"⢔⢅⠈⢢\", \"⡁⢂⠆⡍\", \"⢔⠨⢑⢐\", \"⠨⡑⡠⠊\"] as const;\n\nexport const SparkleSpinner = createAgentFrameSpinner(FRAMES, 150, \"SparkleSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/speaker.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"🔈\", \"🔉\", \"🔊\", \"🔉\"] as const;\n\nexport const SpeakerSpinner = createAgentFrameSpinner(FRAMES, 160, \"SpeakerSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/square-corners.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◰\", \"◳\", \"◲\", \"◱\"] as const;\n\nexport const SquareCornersSpinner = createAgentFrameSpinner(\n  FRAMES,\n  180,\n  \"SquareCornersSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/toggle.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⊶\", \"⊷\"] as const;\n\nexport const ToggleSpinner = createAgentFrameSpinner(FRAMES, 250, \"ToggleSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/triangle.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"◢\", \"◣\", \"◤\", \"◥\"] as const;\n\nexport const TriangleSpinner = createAgentFrameSpinner(FRAMES, 50, \"TriangleSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/waverows.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\n  \"⠖⠉⠉⠑\",\n  \"⡠⠖⠉⠉\",\n  \"⣠⡠⠖⠉\",\n  \"⣄⣠⡠⠖\",\n  \"⠢⣄⣠⡠\",\n  \"⠙⠢⣄⣠\",\n  \"⠉⠙⠢⣄\",\n  \"⠊⠉⠙⠢\",\n  \"⠜⠊⠉⠙\",\n  \"⡤⠜⠊⠉\",\n  \"⣀⡤⠜⠊\",\n  \"⢤⣀⡤⠜\",\n  \"⠣⢤⣀⡤\",\n  \"⠑⠣⢤⣀\",\n  \"⠉⠑⠣⢤\",\n  \"⠋⠉⠑⠣\",\n] as const;\n\nexport const WaveRowsSpinner = createAgentFrameSpinner(FRAMES, 90, \"WaveRowsSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/wave.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠁⠂⠄⡀\", \"⠂⠄⡀⢀\", \"⠄⡀⢀⠠\", \"⡀⢀⠠⠐\", \"⢀⠠⠐⠈\", \"⠠⠐⠈⠁\", \"⠐⠈⠁⠂\", \"⠈⠁⠂⠄\"] as const;\n\nexport const WaveSpinner = createAgentFrameSpinner(FRAMES, 100, \"WaveSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/weather.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"☀️\", \"🌤\", \"⛅️\", \"🌥\", \"☁️\", \"🌧\", \"🌨\", \"⛈\"] as const;\n\nexport const WeatherSpinner = createAgentFrameSpinner(FRAMES, 100, \"WeatherSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/mixed-x-post-pack.tsx",
+      "content": "\"use client\";\n\n/**\n * Four deterministic “novel” spinners for social posts — built with\n * {@link createMixedFrameSpinner} from `../mix-frame-spinners`.\n * Frame literals mirror `src/spinners/*.tsx` sources (keep in sync if those change).\n */\nimport { createMixedFrameSpinner } from \"../mix-frame-spinners\";\n\n/** @see `./dots` */\nconst DOTS_FRAMES = [\"⠋\", \"⠙\", \"⠹\", \"⠸\", \"⠼\", \"⠴\", \"⠦\", \"⠧\", \"⠇\", \"⠏\"] as const;\n\n/** @see `./dots2` */\nconst DOTS2_FRAMES = [\"⣾\", \"⣽\", \"⣻\", \"⢿\", \"⡿\", \"⣟\", \"⣯\", \"⣷\"] as const;\n\n/** @see `./dots3` */\nconst DOTS3_FRAMES = [\"⠋\", \"⠙\", \"⠚\", \"⠞\", \"⠖\", \"⠦\", \"⠴\", \"⠲\", \"⠳\", \"⠓\"] as const;\n\n/** @see `./dots4` */\nconst DOTS4_FRAMES = [\n  \"⠄\",\n  \"⠆\",\n  \"⠇\",\n  \"⠋\",\n  \"⠙\",\n  \"⠸\",\n  \"⠰\",\n  \"⠠\",\n  \"⠰\",\n  \"⠸\",\n  \"⠙\",\n  \"⠋\",\n  \"⠇\",\n  \"⠆\",\n] as const;\n\n/** @see `./bounce` */\nconst BOUNCE_FRAMES = [\"⠁\", \"⠂\", \"⠄\", \"⡀\", \"⠄\", \"⠂\"] as const;\n\n/** @see `./dqpb` */\nconst DQPB_FRAMES = [\"d\", \"q\", \"p\", \"b\"] as const;\n\n/** OR-fusion of four classic dot loops — dense “supernova” Braille. */\nexport const XPostQuadrantBrailleOrSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, DOTS2_FRAMES, DOTS3_FRAMES, DOTS4_FRAMES],\n  { type: \"braille-or\", maxPeriod: 96 },\n  72,\n  \"XPostQuadrantBrailleOrSpinner\",\n);\n\n/** OR-fusion of three rhythms (dots + bounce + dots2). */\nexport const XPostTrioBrailleOrSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, BOUNCE_FRAMES, DOTS2_FRAMES],\n  { type: \"braille-or\", maxPeriod: 72 },\n  80,\n  \"XPostTrioBrailleOrSpinner\",\n);\n\n/** Full `dqpb` cycle, then full dots cycle — ASCII ↔ Braille handoff. */\nexport const XPostAsciiBrailleCarouselSpinner = createMixedFrameSpinner(\n  [DQPB_FRAMES, DOTS_FRAMES],\n  { type: \"carousel\", repeat: 1 },\n  90,\n  \"XPostAsciiBrailleCarouselSpinner\",\n);\n\n/** Strobe scan: for each beat, show one frame from dots, then one from dots2, repeat. */\nexport const XPostDotsScanRoundRobinSpinner = createMixedFrameSpinner(\n  [DOTS_FRAMES, DOTS2_FRAMES],\n  { type: \"scan-round-robin\" },\n  55,\n  \"XPostDotsScanRoundRobinSpinner\",\n);\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/zen.tsx",
+      "content": "\"use client\";\n\nimport { createAgentFrameSpinner } from \"@/lib/next-spinners/agent-frame-spinner\";\n\nconst FRAMES = [\"⠀\", \"⠄\", \"⠆\", \"⠦\", \"⠶\", \"⠷\", \"⠿\", \"⠷\", \"⠶\", \"⠦\", \"⠆\", \"⠄\", \"⠀\"] as const;\n\nexport const ZenSpinner = createAgentFrameSpinner(FRAMES, 130, \"ZenSpinner\");\n",
+      "type": "registry:component",
+      "target": ""
+    },
+    {
+      "path": "components/next-spinners/spinners/index.ts",
+      "content": "\"use client\";\n\nexport { ArcSpinner } from \"./arc\";\nexport { ArrowSpinner } from \"./arrow\";\nexport { AuroraSpinner } from \"./aurora\";\nexport { BalloonSpinner } from \"./balloon\";\nexport { BloomSpinner } from \"./bloom\";\nexport { BounceSpinner } from \"./bounce\";\nexport { BreatheSpinner } from \"./breathe\";\nexport { CascadeSpinner } from \"./cascade\";\nexport { CheckerboardSpinner } from \"./checkerboard\";\nexport { CircleHalvesSpinner } from \"./circle-halves\";\nexport { CircleQuartersSpinner } from \"./circle-quarters\";\nexport { ClockSpinner } from \"./clock\";\nexport { ColumnsSpinner } from \"./columns\";\nexport { DiagSwipeSpinner } from \"./diagswipe\";\nexport { Dots10Spinner } from \"./dots10\";\nexport { Dots11Spinner } from \"./dots11\";\nexport { Dots12Spinner } from \"./dots12\";\nexport { Dots13Spinner } from \"./dots13\";\nexport { Dots14Spinner } from \"./dots14\";\nexport { Dots2Spinner } from \"./dots2\";\nexport { Dots3Spinner } from \"./dots3\";\nexport { Dots4Spinner } from \"./dots4\";\nexport { Dots5Spinner } from \"./dots5\";\nexport { Dots6Spinner } from \"./dots6\";\nexport { Dots7Spinner } from \"./dots7\";\nexport { Dots8Spinner } from \"./dots8\";\nexport { Dots9Spinner } from \"./dots9\";\nexport { DotsCircleSpinner } from \"./dots-circle\";\nexport { DotsSpinner } from \"./dots\";\nexport { DoubleArrowSpinner } from \"./double-arrow\";\nexport { DqpbSpinner } from \"./dqpb\";\nexport { EarthSpinner } from \"./earth\";\nexport { EchoSpinner } from \"./echo\";\nexport { FillSweepSpinner } from \"./fillsweep\";\nexport { FlowSpinner } from \"./flow\";\nexport { GleamSpinner } from \"./gleam\";\nexport { GrowHorizontalSpinner } from \"./grow-horizontal\";\nexport { GrowVerticalSpinner } from \"./grow-vertical\";\nexport { HaloSpinner } from \"./halo\";\nexport { HeartsSpinner } from \"./hearts\";\nexport { HelixSpinner } from \"./helix\";\nexport { MoonSpinner } from \"./moon\";\nexport { NoiseSpinner } from \"./noise\";\nexport { NovaSpinner } from \"./nova\";\nexport { OrbitSpinner } from \"./orbit\";\nexport { PointSpinner } from \"./point\";\nexport { PrismSpinner } from \"./prism\";\nexport { PulseSpinner } from \"./pulse\";\nexport { RainSpinner } from \"./rain\";\nexport { RandomSpinner } from \"./random\";\nexport { RippleSpinner } from \"./ripple\";\nexport { RollingLineSpinner } from \"./rolling-line\";\nexport { SandSpinner } from \"./sand\";\nexport { ScanSpinner } from \"./scan\";\nexport { SimpleDotsScrollingSpinner } from \"./simple-dots-scrolling\";\nexport { SimpleDotsSpinner } from \"./simple-dots\";\nexport { SnakeSpinner } from \"./snake\";\nexport { SparkleSpinner } from \"./sparkle\";\nexport { SpeakerSpinner } from \"./speaker\";\nexport { SquareCornersSpinner } from \"./square-corners\";\nexport { ToggleSpinner } from \"./toggle\";\nexport { TriangleSpinner } from \"./triangle\";\nexport { WaveRowsSpinner } from \"./waverows\";\nexport { WaveSpinner } from \"./wave\";\nexport { WeatherSpinner } from \"./weather\";\nexport { XPostQuadrantBrailleOrSpinner } from \"./mixed-x-post-pack\";\nexport { ZenSpinner } from \"./zen\";\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ]
+}
