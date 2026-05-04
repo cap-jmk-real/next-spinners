@@ -1,6 +1,6 @@
 {
   "name": "next-spinners",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Braille / Unicode frame spinners for Next.js/React; ships Loading UI registry components as next-spinners/loading-ui; vendors full upstream trees under vendor/.",
   "license": "MIT",
   "author": "",
