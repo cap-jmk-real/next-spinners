@@ -2,7 +2,18 @@
 
 Braille/Unicode **frame** spinners for **React** / **Next.js** (Client Components: `useState` + interval). No CSS import—inline styles only.
 
-**[Docs](https://cap-jmk-real.github.io/next-spinners/)** · **License:** MIT
+<!-- HTML + img: renders in VS Code/Cursor preview; same shields as nested markdown on GitHub -->
+<p>
+  <a href="https://github.com/cap-jmk-real/next-spinners/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/cap-jmk-real/next-spinners/ci.yml?style=flat-square&amp;label=CI" alt="CI" /></a>
+  <a href="https://www.npmjs.com/package/next-spinners"><img src="https://img.shields.io/npm/v/next-spinners.svg?style=flat-square" alt="npm version" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License: MIT" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-6.x-3178C6?style=flat-square&amp;logo=typescript&amp;logoColor=white" alt="TypeScript" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node-22%2B-339933?style=flat-square&amp;logo=node.js&amp;logoColor=white" alt="Node" /></a>
+  <a href="https://cap-jmk-real.github.io/next-spinners/"><img src="https://img.shields.io/badge/docs-GitHub%20Pages-0ea5e9?style=flat-square&amp;logo=readthedocs&amp;logoColor=white" alt="Docs" /></a>
+  <a href="https://coderabbit.ai"><img src="https://img.shields.io/coderabbit/prs/github/cap-jmk-real/next-spinners?style=flat-square&amp;utm_source=oss&amp;utm_medium=github&amp;utm_campaign=cap-jmk-real%2Fnext-spinners&amp;labelColor=171717&amp;color=FF570A&amp;link=https%3A%2F%2Fcoderabbit.ai&amp;label=CodeRabbit+Reviews" alt="CodeRabbit Reviews" /></a>
+</p>
+
+---
 
 ## Install
 
