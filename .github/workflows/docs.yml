@@ -32,7 +32,12 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: docs/package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            docs/package-lock.json
+
+      - name: Install root dependencies (for docs typecheck of ../src imports)
+        run: npm ci
 
       - name: Install docs dependencies
         working-directory: docs
