@@ -1,0 +1,4 @@
+rules:
+  - p/security-audit
+  - p/secrets
+  - p/owasp-top-ten
