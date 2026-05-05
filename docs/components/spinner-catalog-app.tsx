@@ -372,7 +372,10 @@ export function SpinnerCatalogApp() {
           <GleamEffectCell
             name="Warm neon"
             color="#fbbf24"
-            style={{ textShadow: "0 0 10px rgba(251, 191, 36, 0.85), 0 0 18px rgba(251, 191, 36, 0.45)" }}
+            style={{
+              textShadow:
+                "0 0 10px rgba(251, 191, 36, 0.85), 0 0 18px rgba(251, 191, 36, 0.45)",
+            }}
           />
           <GleamEffectCell
             name="Ghost trail"
@@ -391,7 +394,8 @@ export function SpinnerCatalogApp() {
             name="CRT amber"
             color="#f59e0b"
             style={{
-              textShadow: "0 0 1px rgba(245, 158, 11, 0.9), 0 0 8px rgba(245, 158, 11, 0.55)",
+              textShadow:
+                "0 0 1px rgba(245, 158, 11, 0.9), 0 0 8px rgba(245, 158, 11, 0.55)",
               filter: "contrast(1.15) saturate(1.1)",
             }}
           />
@@ -406,7 +410,10 @@ export function SpinnerCatalogApp() {
           <GleamEffectCell
             name="Blur bloom"
             color="#f472b6"
-            style={{ filter: "blur(0.2px)", textShadow: "0 0 14px rgba(244, 114, 182, 0.6)" }}
+            style={{
+              filter: "blur(0.2px)",
+              textShadow: "0 0 14px rgba(244, 114, 182, 0.6)",
+            }}
           />
           <GleamEffectCell
             name="High contrast"
@@ -425,7 +432,10 @@ export function SpinnerCatalogApp() {
           <GleamEffectCell
             name="Blend screen"
             color="#22d3ee"
-            style={{ mixBlendMode: "screen", textShadow: "0 0 10px rgba(34, 211, 238, 0.5)" }}
+            style={{
+              mixBlendMode: "screen",
+              textShadow: "0 0 10px rgba(34, 211, 238, 0.5)",
+            }}
           />
           <GleamEffectCell
             name="Hue shift"
@@ -450,7 +460,9 @@ export function SpinnerHeroApp() {
       <p style={{ margin: "0 0 1rem", fontSize: 13, lineHeight: 1.55, color: MUTED }}>
         Live-rendered frame spinners in the browser (no GIF).
       </p>
-      <div style={{ ...grid, gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
+      <div
+        style={{ ...grid, gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+      >
         <PreviewCell name="DotsSpinner" Comp={DotsSpinner} />
         <PreviewCell name="PulseSpinner" Comp={PulseSpinner} />
         <PreviewCell name="WaveSpinner" Comp={WaveSpinner} />

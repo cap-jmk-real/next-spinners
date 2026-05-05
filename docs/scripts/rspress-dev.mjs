@@ -9,7 +9,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const rspressBin = path.join(__dirname, "..", "node_modules", "rspress", "bin", "rspress.js");
+const rspressBin = path.join(
+  __dirname,
+  "..",
+  "node_modules",
+  "rspress",
+  "bin",
+  "rspress.js",
+);
 const child = spawn(process.execPath, [rspressBin, "dev", ...process.argv.slice(2)], {
   stdio: "inherit",
   env: { ...process.env, NODE_ENV: "development" },

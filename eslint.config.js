@@ -12,6 +12,13 @@ export default tseslint.config(
       "docs/node_modules/**",
       "docs/dist/**",
       "docs/.rspress/**",
+      "docs/.next/**",
+      "docs/out/**",
+      "docs/public/examples/**",
+      "docs/public/media/**",
+      "docs/rspress.config.mjs",
+      "docs/next.config.mjs",
+      "docs/scripts/**",
       /** Synced copy of `examples/` for the docs site — may contain `.next/` build output. */
       "docs/examples/**",
       "examples/**",

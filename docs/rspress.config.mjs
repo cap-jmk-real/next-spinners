@@ -19,7 +19,9 @@ function rspressCliSubcommand() {
  */
 const docsBase =
   process.env.RSPRESS_BASE ??
-  (["build", "preview", "serve"].includes(rspressCliSubcommand()) ? "/next-spinner-kit/" : "/");
+  (["build", "preview", "serve"].includes(rspressCliSubcommand())
+    ? "/next-spinner-kit/"
+    : "/");
 
 export default defineConfig({
   root: ".",
