@@ -1,18 +1,17 @@
-/**
- * Preserves the prior docs look: zinc / near-black chrome, emerald accent
- * (same intent as loading-ui-theme.css for Rspress).
- */
-html {
-  color-scheme: dark;
-}
-
 .docs-site-logo {
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: #fafafa;
 }
 
-/* Nextra docs theme (Tailwind v4 tokens): nudge accent + surfaces toward emerald / zinc */
+/* Light mode: calmer blue accents and cleaner neutrals */
+:root {
+  --x-color-blue-400: oklch(70% 0.13 247);
+  --x-color-blue-600: oklch(58% 0.14 250);
+  --x-color-blue-700: oklch(50% 0.13 252);
+}
+
+/* Dark mode: keep the emerald/zinc character */
 .dark,
 html[class="dark"] {
   --x-color-blue-400: oklch(78% 0.12 160);
