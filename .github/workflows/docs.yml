@@ -46,7 +46,7 @@ jobs:
       - name: Build docs
         working-directory: docs
         env:
-          DOCS_BASE: /next-spinner-kit
+          DOCS_BASE: /${{ github.event.repository.name }}
         run: npm run build
 
       - name: Upload artifact
