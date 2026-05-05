@@ -1,0 +1,55 @@
+---
+title: Maintainers
+---
+
+# Maintainers
+
+## Regenerating spinners from expo-agent-spinners
+
+1. Clone [expo-agent-spinners](https://github.com/Eronred/expo-agent-spinners) into **`.expo-spinners-src/`** at the repo root (gitignored).
+2. Run:
+
+```bash
+node scripts/generate-agent-spinners.mjs
+```
+
+3. Run format, tests, and `npm run build`.
+
+## Preview GIF and frame snapshot
+
+Vanilla preview HTML and the npm readme GIF are driven by the same frame lists as the React components.
+
+- **Snapshot JSON + overview HTML** (after editing `src/spinners/*.tsx`):
+
+```bash
+npm run media:snapshot
+```
+
+This updates `media/spinner-frames-snapshot.json` and inlines data into `media/overview.html`.
+
+- **Animated GIF** (Playwright + ffmpeg):
+
+```bash
+npm run media:gif
+```
+
+Requires a Chromium install (`npx playwright install chromium` or system Chrome/Edge). Tunables live in `scripts/capture-overview-gif.mjs` (viewport, frame interval, fps).
+
+- **Mixed-frame X showcase GIF** (four `createMixedFrameSpinner` demos): `npm run media:gif:mixed-x` after `cd examples/mixed-x-gif-app && npm install`. Output: `media/next-spinners-mixed-x-showcase.gif`. Tunables: `scripts/capture-mixed-x-showcase-gif.mjs` (`MIXED_X_GIF_*`, `MIXED_X_SHOWCASE_BASE_URL`).
+
+Prettier may flag regenerated `media/overview.html` / `media/spinner-frames-snapshot.json`; run the repo’s Prettier check/fix if CI complains.
+
+## Documentation site
+
+From the repo root:
+
+```bash
+npm run docs:dev    # Next.js + Nextra (content in docs/content)
+npm run docs:build  # static export → docs/out
+```
+
+`docs/sync-public.mjs` runs before dev/build and copies `media/` and `examples/` into `docs/public/` so images and static example paths resolve.
+
+**GitHub Pages:** set `DOCS_BASE=/next-spinner-kit` when building (see CI). Local dev omits `DOCS_BASE` so the site is served from `/`.
+
+Dev defaults: port **3320** (`PORT` or `-p` in `npm run dev -- -p 3320`), host **0.0.0.0** when using `next dev --hostname 0.0.0.0`.

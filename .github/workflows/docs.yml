@@ -1,4 +1,4 @@
-# Rspress docs (React + MDX) → GitHub Pages. Runs when `main` updates (e.g. after PR merge).
+# Nextra (Next.js + MDX) → GitHub Pages. Runs when `main` updates (e.g. after PR merge).
 # This repo’s CI is PR-only, so we do not use workflow_run on "CI" (it would not
 # run on push to main). One-time: Settings → Pages → Source = "GitHub Actions".
 # Pattern adapted from https://github.com/cap-jmk-real/shiphook (.github/workflows/docs.yml).
@@ -40,12 +40,14 @@ jobs:
 
       - name: Build docs
         working-directory: docs
+        env:
+          DOCS_BASE: /next-spinner-kit
         run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: docs/dist
+          path: docs/out
 
   deploy:
     needs: build

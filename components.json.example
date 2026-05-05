@@ -17,6 +17,6 @@
   },
   "iconLibrary": "lucide",
   "registries": {
-    "@next-spinners": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/{name}.json"
+    "@next-spinners": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/{name}.json"
   }
 }

@@ -336,7 +336,7 @@ const PAGES = [
     banner:
       "Eleven spinners with no Expo demo key. Three style variants for the README GIF.",
     sourceLabel: "next-spinners",
-    sourceUrl: "https://github.com/cap-jmk-real/next-spinners",
+    sourceUrl: "https://github.com/cap-jmk-real/next-spinner-kit",
     bodyClass: "",
     sections: [
       {

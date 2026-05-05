@@ -3,6 +3,8 @@ node_modules/
 dist/
 coverage/
 docs/node_modules/
+docs/.next/
+docs/out/
 docs/.rspress
 docs/dist
 docs/public/

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "@next-spinners",
-  "homepage": "https://github.com/cap-jmk-real/next-spinners",
+  "homepage": "https://github.com/cap-jmk-real/next-spinner-kit",
   "items": [
     {
       "name": "ns-agent-frame",
@@ -9,7 +9,7 @@
       "title": "Agent frame factory",
       "description": "createAgentFrameSpinner — add spinners separately or use ns-all.",
       "registryDependencies": [],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
     },
     {
       "name": "ns-all",
@@ -18,7 +18,7 @@
       "description": "Install every frame spinner at once.",
       "dependencies": [],
       "registryDependencies": [],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-all.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-all.json"
     },
     {
       "name": "ns-arc",
@@ -26,9 +26,9 @@
       "title": "ArcSpinner",
       "description": "Frame spinner ArcSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-arc.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-arc.json"
     },
     {
       "name": "ns-arrow",
@@ -36,9 +36,9 @@
       "title": "ArrowSpinner",
       "description": "Frame spinner ArrowSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-arrow.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-arrow.json"
     },
     {
       "name": "ns-aurora",
@@ -46,9 +46,9 @@
       "title": "AuroraSpinner",
       "description": "Frame spinner AuroraSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-aurora.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-aurora.json"
     },
     {
       "name": "ns-balloon",
@@ -56,9 +56,9 @@
       "title": "BalloonSpinner",
       "description": "Frame spinner BalloonSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-balloon.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-balloon.json"
     },
     {
       "name": "ns-bloom",
@@ -66,9 +66,9 @@
       "title": "BloomSpinner",
       "description": "Frame spinner BloomSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-bloom.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-bloom.json"
     },
     {
       "name": "ns-bounce",
@@ -76,9 +76,9 @@
       "title": "BounceSpinner",
       "description": "Frame spinner BounceSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-bounce.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-bounce.json"
     },
     {
       "name": "ns-breathe",
@@ -86,9 +86,9 @@
       "title": "BreatheSpinner",
       "description": "Frame spinner BreatheSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-breathe.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-breathe.json"
     },
     {
       "name": "ns-cascade",
@@ -96,9 +96,9 @@
       "title": "CascadeSpinner",
       "description": "Frame spinner CascadeSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-cascade.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-cascade.json"
     },
     {
       "name": "ns-checkerboard",
@@ -106,9 +106,9 @@
       "title": "CheckerboardSpinner",
       "description": "Frame spinner CheckerboardSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-checkerboard.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-checkerboard.json"
     },
     {
       "name": "ns-circle-halves",
@@ -116,9 +116,9 @@
       "title": "CircleHalvesSpinner",
       "description": "Frame spinner CircleHalvesSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-circle-halves.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-circle-halves.json"
     },
     {
       "name": "ns-circle-quarters",
@@ -126,9 +126,9 @@
       "title": "CircleQuartersSpinner",
       "description": "Frame spinner CircleQuartersSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-circle-quarters.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-circle-quarters.json"
     },
     {
       "name": "ns-clock",
@@ -136,9 +136,9 @@
       "title": "ClockSpinner",
       "description": "Frame spinner ClockSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-clock.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-clock.json"
     },
     {
       "name": "ns-columns",
@@ -146,9 +146,9 @@
       "title": "ColumnsSpinner",
       "description": "Frame spinner ColumnsSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-columns.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-columns.json"
     },
     {
       "name": "ns-diagswipe",
@@ -156,9 +156,9 @@
       "title": "DiagSwipeSpinner",
       "description": "Frame spinner DiagSwipeSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-diagswipe.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-diagswipe.json"
     },
     {
       "name": "ns-dots10",
@@ -166,9 +166,9 @@
       "title": "Dots10Spinner",
       "description": "Frame spinner Dots10Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots10.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots10.json"
     },
     {
       "name": "ns-dots11",
@@ -176,9 +176,9 @@
       "title": "Dots11Spinner",
       "description": "Frame spinner Dots11Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots11.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots11.json"
     },
     {
       "name": "ns-dots12",
@@ -186,9 +186,9 @@
       "title": "Dots12Spinner",
       "description": "Frame spinner Dots12Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots12.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots12.json"
     },
     {
       "name": "ns-dots13",
@@ -196,9 +196,9 @@
       "title": "Dots13Spinner",
       "description": "Frame spinner Dots13Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots13.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots13.json"
     },
     {
       "name": "ns-dots14",
@@ -206,9 +206,9 @@
       "title": "Dots14Spinner",
       "description": "Frame spinner Dots14Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots14.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots14.json"
     },
     {
       "name": "ns-dots2",
@@ -216,9 +216,9 @@
       "title": "Dots2Spinner",
       "description": "Frame spinner Dots2Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots2.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots2.json"
     },
     {
       "name": "ns-dots3",
@@ -226,9 +226,9 @@
       "title": "Dots3Spinner",
       "description": "Frame spinner Dots3Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots3.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots3.json"
     },
     {
       "name": "ns-dots4",
@@ -236,9 +236,9 @@
       "title": "Dots4Spinner",
       "description": "Frame spinner Dots4Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots4.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots4.json"
     },
     {
       "name": "ns-dots5",
@@ -246,9 +246,9 @@
       "title": "Dots5Spinner",
       "description": "Frame spinner Dots5Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots5.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots5.json"
     },
     {
       "name": "ns-dots6",
@@ -256,9 +256,9 @@
       "title": "Dots6Spinner",
       "description": "Frame spinner Dots6Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots6.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots6.json"
     },
     {
       "name": "ns-dots7",
@@ -266,9 +266,9 @@
       "title": "Dots7Spinner",
       "description": "Frame spinner Dots7Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots7.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots7.json"
     },
     {
       "name": "ns-dots8",
@@ -276,9 +276,9 @@
       "title": "Dots8Spinner",
       "description": "Frame spinner Dots8Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots8.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots8.json"
     },
     {
       "name": "ns-dots9",
@@ -286,9 +286,9 @@
       "title": "Dots9Spinner",
       "description": "Frame spinner Dots9Spinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots9.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots9.json"
     },
     {
       "name": "ns-dots-circle",
@@ -296,9 +296,9 @@
       "title": "DotsCircleSpinner",
       "description": "Frame spinner DotsCircleSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots-circle.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots-circle.json"
     },
     {
       "name": "ns-dots",
@@ -306,9 +306,9 @@
       "title": "DotsSpinner",
       "description": "Frame spinner DotsSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dots.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dots.json"
     },
     {
       "name": "ns-double-arrow",
@@ -316,9 +316,9 @@
       "title": "DoubleArrowSpinner",
       "description": "Frame spinner DoubleArrowSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-double-arrow.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-double-arrow.json"
     },
     {
       "name": "ns-dqpb",
@@ -326,9 +326,9 @@
       "title": "DqpbSpinner",
       "description": "Frame spinner DqpbSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-dqpb.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-dqpb.json"
     },
     {
       "name": "ns-earth",
@@ -336,9 +336,9 @@
       "title": "EarthSpinner",
       "description": "Frame spinner EarthSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-earth.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-earth.json"
     },
     {
       "name": "ns-echo",
@@ -346,9 +346,9 @@
       "title": "EchoSpinner",
       "description": "Frame spinner EchoSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-echo.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-echo.json"
     },
     {
       "name": "ns-fillsweep",
@@ -356,9 +356,9 @@
       "title": "FillSweepSpinner",
       "description": "Frame spinner FillSweepSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-fillsweep.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-fillsweep.json"
     },
     {
       "name": "ns-flow",
@@ -366,9 +366,9 @@
       "title": "FlowSpinner",
       "description": "Frame spinner FlowSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-flow.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-flow.json"
     },
     {
       "name": "ns-gleam",
@@ -376,9 +376,9 @@
       "title": "GleamSpinner",
       "description": "Frame spinner GleamSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-gleam.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-gleam.json"
     },
     {
       "name": "ns-grow-horizontal",
@@ -386,9 +386,9 @@
       "title": "GrowHorizontalSpinner",
       "description": "Frame spinner GrowHorizontalSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-grow-horizontal.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-grow-horizontal.json"
     },
     {
       "name": "ns-grow-vertical",
@@ -396,9 +396,9 @@
       "title": "GrowVerticalSpinner",
       "description": "Frame spinner GrowVerticalSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-grow-vertical.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-grow-vertical.json"
     },
     {
       "name": "ns-halo",
@@ -406,9 +406,9 @@
       "title": "HaloSpinner",
       "description": "Frame spinner HaloSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-halo.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-halo.json"
     },
     {
       "name": "ns-hearts",
@@ -416,9 +416,9 @@
       "title": "HeartsSpinner",
       "description": "Frame spinner HeartsSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-hearts.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-hearts.json"
     },
     {
       "name": "ns-helix",
@@ -426,9 +426,9 @@
       "title": "HelixSpinner",
       "description": "Frame spinner HelixSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-helix.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-helix.json"
     },
     {
       "name": "ns-moon",
@@ -436,9 +436,9 @@
       "title": "MoonSpinner",
       "description": "Frame spinner MoonSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-moon.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-moon.json"
     },
     {
       "name": "ns-noise",
@@ -446,9 +446,9 @@
       "title": "NoiseSpinner",
       "description": "Frame spinner NoiseSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-noise.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-noise.json"
     },
     {
       "name": "ns-nova",
@@ -456,9 +456,9 @@
       "title": "NovaSpinner",
       "description": "Frame spinner NovaSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-nova.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-nova.json"
     },
     {
       "name": "ns-orbit",
@@ -466,9 +466,9 @@
       "title": "OrbitSpinner",
       "description": "Frame spinner OrbitSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-orbit.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-orbit.json"
     },
     {
       "name": "ns-point",
@@ -476,9 +476,9 @@
       "title": "PointSpinner",
       "description": "Frame spinner PointSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-point.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-point.json"
     },
     {
       "name": "ns-prism",
@@ -486,9 +486,9 @@
       "title": "PrismSpinner",
       "description": "Frame spinner PrismSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-prism.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-prism.json"
     },
     {
       "name": "ns-pulse",
@@ -496,9 +496,9 @@
       "title": "PulseSpinner",
       "description": "Frame spinner PulseSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-pulse.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-pulse.json"
     },
     {
       "name": "ns-rain",
@@ -506,9 +506,9 @@
       "title": "RainSpinner",
       "description": "Frame spinner RainSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-rain.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-rain.json"
     },
     {
       "name": "ns-random",
@@ -516,9 +516,9 @@
       "title": "RandomSpinner",
       "description": "Frame spinner RandomSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-random.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-random.json"
     },
     {
       "name": "ns-ripple",
@@ -526,9 +526,9 @@
       "title": "RippleSpinner",
       "description": "Frame spinner RippleSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-ripple.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-ripple.json"
     },
     {
       "name": "ns-rolling-line",
@@ -536,9 +536,9 @@
       "title": "RollingLineSpinner",
       "description": "Frame spinner RollingLineSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-rolling-line.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-rolling-line.json"
     },
     {
       "name": "ns-sand",
@@ -546,9 +546,9 @@
       "title": "SandSpinner",
       "description": "Frame spinner SandSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-sand.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-sand.json"
     },
     {
       "name": "ns-scan",
@@ -556,9 +556,9 @@
       "title": "ScanSpinner",
       "description": "Frame spinner ScanSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-scan.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-scan.json"
     },
     {
       "name": "ns-simple-dots-scrolling",
@@ -566,9 +566,9 @@
       "title": "SimpleDotsScrollingSpinner",
       "description": "Frame spinner SimpleDotsScrollingSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-simple-dots-scrolling.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-simple-dots-scrolling.json"
     },
     {
       "name": "ns-simple-dots",
@@ -576,9 +576,9 @@
       "title": "SimpleDotsSpinner",
       "description": "Frame spinner SimpleDotsSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-simple-dots.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-simple-dots.json"
     },
     {
       "name": "ns-snake",
@@ -586,9 +586,9 @@
       "title": "SnakeSpinner",
       "description": "Frame spinner SnakeSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-snake.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-snake.json"
     },
     {
       "name": "ns-sparkle",
@@ -596,9 +596,9 @@
       "title": "SparkleSpinner",
       "description": "Frame spinner SparkleSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-sparkle.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-sparkle.json"
     },
     {
       "name": "ns-speaker",
@@ -606,9 +606,9 @@
       "title": "SpeakerSpinner",
       "description": "Frame spinner SpeakerSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-speaker.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-speaker.json"
     },
     {
       "name": "ns-square-corners",
@@ -616,9 +616,9 @@
       "title": "SquareCornersSpinner",
       "description": "Frame spinner SquareCornersSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-square-corners.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-square-corners.json"
     },
     {
       "name": "ns-toggle",
@@ -626,9 +626,9 @@
       "title": "ToggleSpinner",
       "description": "Frame spinner ToggleSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-toggle.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-toggle.json"
     },
     {
       "name": "ns-triangle",
@@ -636,9 +636,9 @@
       "title": "TriangleSpinner",
       "description": "Frame spinner TriangleSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-triangle.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-triangle.json"
     },
     {
       "name": "ns-waverows",
@@ -646,9 +646,9 @@
       "title": "WaveRowsSpinner",
       "description": "Frame spinner WaveRowsSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-waverows.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-waverows.json"
     },
     {
       "name": "ns-wave",
@@ -656,9 +656,9 @@
       "title": "WaveSpinner",
       "description": "Frame spinner WaveSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-wave.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-wave.json"
     },
     {
       "name": "ns-weather",
@@ -666,9 +666,9 @@
       "title": "WeatherSpinner",
       "description": "Frame spinner WeatherSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-weather.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-weather.json"
     },
     {
       "name": "ns-mixed-x-post-pack",
@@ -676,9 +676,9 @@
       "title": "XPostQuadrantBrailleOrSpinner",
       "description": "Frame spinner XPostQuadrantBrailleOrSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-mixed-x-post-pack.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-mixed-x-post-pack.json"
     },
     {
       "name": "ns-zen",
@@ -686,9 +686,9 @@
       "title": "ZenSpinner",
       "description": "Frame spinner ZenSpinner",
       "registryDependencies": [
-        "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+        "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
       ],
-      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-zen.json"
+      "url": "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-zen.json"
     }
   ]
 }

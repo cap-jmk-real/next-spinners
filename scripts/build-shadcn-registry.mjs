@@ -3,7 +3,7 @@
  * so consumers can run: npx shadcn@latest add @next-spinners/ns-dots
  *
  * Set REGISTRY_BASE to override raw GitHub URL prefix for registryDependencies
- * (default matches cap-jmk-real/next-spinners main branch).
+ * (default matches cap-jmk-real/next-spinner-kit main branch).
  */
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -14,7 +14,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const REGISTRY_BASE =
   process.env.REGISTRY_BASE?.replace(/\/$/, "") ||
-  "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r";
+  "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r";
 
 const agentSrcPath = join(root, "src", "agent-frame-spinner.tsx");
 const spinnersDir = join(root, "src", "spinners");
@@ -158,7 +158,7 @@ writeJson(join(registryOut, "ns-all.json"), allItem);
 const registryIndex = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "@next-spinners",
-  homepage: "https://github.com/cap-jmk-real/next-spinners",
+  homepage: "https://github.com/cap-jmk-real/next-spinner-kit",
   items: [
     {
       name: "ns-agent-frame",

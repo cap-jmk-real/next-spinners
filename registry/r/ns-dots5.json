@@ -14,6 +14,6 @@
     }
   ],
   "registryDependencies": [
-    "https://raw.githubusercontent.com/cap-jmk-real/next-spinners/main/registry/r/ns-agent-frame.json"
+    "https://raw.githubusercontent.com/cap-jmk-real/next-spinner-kit/main/registry/r/ns-agent-frame.json"
   ]
 }
