@@ -122,10 +122,11 @@ export function createAgentFrameSpinner(
       fontSize: size,
       color,
       textAlign: "center",
-      lineHeight: size * 1.3,
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
+      lineHeight: effect === "dotmatrix" ? 1.45 : 1.3,
+      display: "inline-block",
+      verticalAlign: "middle",
+      overflow: "visible",
+      paddingBottom: effect === "dotmatrix" ? "0.14em" : 0,
       /* Braille (U+2800…) and mixed Unicode often lack glyphs in pure monospace — symbols first. */
       fontFamily:
         '"Noto Sans Symbols 2", "Segoe UI Symbol", "Segoe UI Emoji", ui-monospace, SFMono-Regular, "Cascadia Code", monospace',

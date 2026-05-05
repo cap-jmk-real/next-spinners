@@ -51,4 +51,8 @@ npm run docs:build  # production build → docs/dist
 
 `docs/sync-public.mjs` runs before build and copies `media/` and `examples/` into the docs app so images and example links resolve.
 
-GitHub Pages base path is configured in `docs/rspress.config.ts` (`base: "/next-spinners/"`).
+GitHub Pages uses `/next-spinner-kit/` as `base` only for production builds (`rspress build` / `rspress preview`); local `rspress dev` uses `/` so open `http://host:port/` (not the deployed path). Override anytime with `RSPRESS_BASE`.
+
+Dev server defaults: port **3320** (`DOCS_PORT`), listen **0.0.0.0** (`DOCS_HOST` → e.g. `127.0.0.1` for localhost-only).
+
+If you run `rspress dev` directly (not `npm run dev` in `docs/`), ensure **`NODE_ENV` is not `production`** (or use the `docs/scripts/rspress-dev.mjs` wrapper). A global `NODE_ENV=production` breaks Rspress virtual modules (`virtual-site-data`, etc.).

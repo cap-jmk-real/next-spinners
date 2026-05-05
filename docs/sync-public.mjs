@@ -1,7 +1,6 @@
 /**
- * Copies repo `media/` into the docs app so:
- * - `docs/media/` — Rspress can resolve `![](./media/...)` from `index.md` (README include).
- * - `docs/public/media/` — same files at site root for `/next-spinners/media/...` URLs.
+ * Copies repo `media/` and `examples/` into `docs/public/` so Next can serve
+ * `/media/*` and `/examples/*` (with `basePath` when set for GitHub Pages).
  */
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -10,6 +9,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const src = path.join(root, "media");
+const examplesSrc = path.join(root, "examples");
 
 /**
  * @param {string} from
@@ -29,11 +29,7 @@ async function copyRecursive(from, to) {
   }
 }
 
-/** README links to `./examples/*` from repo root; mirror here so the docs site resolves them from `docs/index.md`. */
-const examplesSrc = path.join(root, "examples");
-
 await Promise.all([
-  copyRecursive(src, path.join(__dirname, "media")),
   copyRecursive(src, path.join(__dirname, "public", "media")),
-  copyRecursive(examplesSrc, path.join(__dirname, "examples")),
+  copyRecursive(examplesSrc, path.join(__dirname, "public", "examples")),
 ]);

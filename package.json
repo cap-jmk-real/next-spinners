@@ -1,12 +1,12 @@
 {
   "name": "next-spinners",
-  "version": "0.1.4",
-  "description": "Braille/Unicode frame spinners for React and Next.js; optional next-spinners/loading-ui (Tailwind/Motion).",
+  "version": "0.1.6",
+  "description": "React & Next.js Braille/Unicode frame spinners, no CSS. shadcn registry. Optional next-spinners/loading-ui (Tailwind, Motion).",
   "license": "MIT",
   "author": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cap-jmk-real/next-spinners.git"
+    "url": "https://github.com/cap-jmk-real/next-spinner-kit.git"
   },
   "keywords": [
     "nextjs",
@@ -88,6 +88,17 @@
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.6.0 || ^3.0.0",
     "motion": "^12.0.0"
+  },
+  "peerDependenciesMeta": {
+    "clsx": {
+      "optional": true
+    },
+    "tailwind-merge": {
+      "optional": true
+    },
+    "motion": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "clsx": "^2.1.1",
