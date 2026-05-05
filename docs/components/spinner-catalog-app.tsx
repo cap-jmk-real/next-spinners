@@ -164,8 +164,8 @@ const MUTED = "#94a3b8";
 
 const shell: CSSProperties = {
   borderRadius: 12,
-  padding: "1.25rem 1.35rem",
-  marginBottom: "1.75rem",
+  padding: "1rem 1.05rem",
+  marginBottom: "1.15rem",
   background: "linear-gradient(165deg, #0f172a 0%, #020617 55%, #0f172a 100%)",
   border: `1px solid ${PANEL_BORDER}`,
   boxShadow: "0 18px 40px rgba(0,0,0,0.35)",
@@ -173,8 +173,8 @@ const shell: CSSProperties = {
 
 const grid: CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(132px, 1fr))",
-  gap: 10,
+  gridTemplateColumns: "repeat(auto-fill, minmax(112px, 1fr))",
+  gap: 8,
 };
 
 const spinnerStage: CSSProperties = {
@@ -202,11 +202,11 @@ export function PreviewCell({
         alignItems: "center",
         justifyContent: "center",
         gap: 8,
-        padding: "12px 8px",
+        padding: "10px 6px",
         borderRadius: 8,
         background: PANEL_BG,
         border: `1px solid ${PANEL_BORDER}`,
-        minHeight: 88,
+        minHeight: 78,
       }}
     >
       <div style={spinnerStage}>
@@ -312,7 +312,7 @@ function Section({
 
 export function SpinnerCatalogApp() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif" }}>
+    <div style={{ fontFamily: "system-ui, sans-serif", maxWidth: 980, margin: "0 auto" }}>
       <Section
         title="Expo lineage (55)"
         description="Based on the Expo demo keys. Same frames and timing, unless noted in the mapping page."
@@ -342,7 +342,7 @@ export function SpinnerCatalogApp() {
         <div
           style={{
             ...grid,
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(112px, 1fr))",
           }}
         >
           <PreviewCell name="DotsSpinner" Comp={DotsSpinner} color="#f472b6" />
@@ -359,7 +359,7 @@ export function SpinnerCatalogApp() {
         <div
           style={{
             ...grid,
-            gridTemplateColumns: "repeat(auto-fill, minmax(132px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(112px, 1fr))",
           }}
         >
           <GleamEffectCell name="Plain" color="#7dd3fc" />
@@ -461,7 +461,7 @@ export function SpinnerHeroApp() {
         Live-rendered frame spinners in the browser (no GIF).
       </p>
       <div
-        style={{ ...grid, gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+        style={{ ...grid, gridTemplateColumns: "repeat(auto-fill, minmax(112px, 1fr))" }}
       >
         <PreviewCell name="DotsSpinner" Comp={DotsSpinner} />
         <PreviewCell name="PulseSpinner" Comp={PulseSpinner} />

@@ -2,23 +2,9 @@ import type { MetaRecord } from "nextra";
 
 const meta: MetaRecord = {
   index: "Introduction",
-  guide: {
-    title: "Guide",
-    type: "page",
-  },
-  reference: {
-    title: "Reference",
-    type: "menu",
-    items: {
-      "spinner-gallery": "Live gallery (by origin)",
-      "expo-mapping": "Expo → export mapping",
-      "shadcn-registry": "shadcn registry",
-    },
-  },
-  maintainers: {
-    title: "Maintainers",
-    type: "page",
-  },
+  guide: "Guide",
+  reference: "Reference",
+  maintainers: "Maintainers",
   npm: {
     title: "npm",
     type: "page",

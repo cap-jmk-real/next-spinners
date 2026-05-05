@@ -1,6 +1,6 @@
 {
   "name": "next-spinners",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "React & Next.js Braille/Unicode frame spinners, no CSS. shadcn registry. Optional next-spinners/loading-ui (Tailwind, Motion).",
   "license": "MIT",
   "author": "",
